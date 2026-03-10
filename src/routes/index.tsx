@@ -1,6 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router';
+import { PrivateRoute } from '@/components/PrivateRoute';
 
-export const Route = createFileRoute('/')({ component: App })
+export const Route = createFileRoute('/')({
+  component: () => (
+    <PrivateRoute>
+      <App />
+    </PrivateRoute>
+  ),
+});
 
 function App() {
   return (
@@ -83,5 +90,5 @@ function App() {
         </ul>
       </section>
     </main>
-  )
+  );
 }
