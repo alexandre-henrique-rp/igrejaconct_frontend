@@ -33,6 +33,55 @@ export default function Header() {
           >
             Sobre
           </Link>
+          <Link
+            to="/membros"
+            className="nav-link"
+            activeProps={{ className: 'nav-link is-active' }}
+          >
+            Membros
+          </Link>
+          <Link
+            to="/celulas"
+            className="nav-link"
+            activeProps={{ className: 'nav-link is-active' }}
+          >
+            Células
+          </Link>
+          <Link
+            to="/eventos"
+            className="nav-link"
+            activeProps={{ className: 'nav-link is-active' }}
+          >
+            Eventos
+          </Link>
+          <Link
+            to="/relatorios"
+            className="nav-link"
+            activeProps={{ className: 'nav-link is-active' }}
+          >
+            Relatórios
+          </Link>
+          <Link
+            to="/financeiro"
+            className="nav-link"
+            activeProps={{ className: 'nav-link is-active' }}
+          >
+            Financeiro
+          </Link>
+          <Link
+            to="/escola-biblica"
+            className="nav-link"
+            activeProps={{ className: 'nav-link is-active' }}
+          >
+            Escola Bíblica
+          </Link>
+          <Link
+            to="/arquivos"
+            className="nav-link"
+            activeProps={{ className: 'nav-link is-active' }}
+          >
+            Arquivos
+          </Link>
         </div>
 
         <div className="ml-auto flex items-center gap-1.5 sm:gap-2">

@@ -13,6 +13,45 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RelatoriosIndexRouteImport } from './routes/relatorios/index'
+import { Route as PerfilIndexRouteImport } from './routes/perfil/index'
+import { Route as PatrimonioIndexRouteImport } from './routes/patrimonio/index'
+import { Route as NotificacoesIndexRouteImport } from './routes/notificacoes/index'
+import { Route as MinisteriosIndexRouteImport } from './routes/ministerios/index'
+import { Route as MembrosIndexRouteImport } from './routes/membros/index'
+import { Route as FinanceiroIndexRouteImport } from './routes/financeiro/index'
+import { Route as EventosIndexRouteImport } from './routes/eventos/index'
+import { Route as EscolaBiblicaIndexRouteImport } from './routes/escola-biblica/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
+import { Route as ConfiguracoesIndexRouteImport } from './routes/configuracoes/index'
+import { Route as CelulasIndexRouteImport } from './routes/celulas/index'
+import { Route as ArquivosIndexRouteImport } from './routes/arquivos/index'
+import { Route as RelatoriosPastoralRouteImport } from './routes/relatorios/pastoral'
+import { Route as RelatoriosMembrosRouteImport } from './routes/relatorios/membros'
+import { Route as RelatoriosFinanceiroRouteImport } from './routes/relatorios/financeiro'
+import { Route as RelatoriosCelulasRouteImport } from './routes/relatorios/celulas'
+import { Route as PerfilDisponibilidadeRouteImport } from './routes/perfil/disponibilidade'
+import { Route as PatrimonioNovoRouteImport } from './routes/patrimonio/novo'
+import { Route as MinisteriosNewRouteImport } from './routes/ministerios/new'
+import { Route as MinisteriosIdRouteImport } from './routes/ministerios/$id'
+import { Route as MembrosNewRouteImport } from './routes/membros/new'
+import { Route as MembrosIdRouteImport } from './routes/membros/$id'
+import { Route as FinanceiroLancamentosRouteImport } from './routes/financeiro/lancamentos'
+import { Route as FinanceiroContasRouteImport } from './routes/financeiro/contas'
+import { Route as FinanceiroCategoriasRouteImport } from './routes/financeiro/categorias'
+import { Route as EventosNewRouteImport } from './routes/eventos/new'
+import { Route as EventosIdRouteImport } from './routes/eventos/$id'
+import { Route as EscolaBiblicaTurmasRouteImport } from './routes/escola-biblica/turmas'
+import { Route as EscolaBiblicaMatriculasRouteImport } from './routes/escola-biblica/matriculas'
+import { Route as EscolaBiblicaCursosRouteImport } from './routes/escola-biblica/cursos'
+import { Route as EscolaBiblicaCertificadosRouteImport } from './routes/escola-biblica/certificados'
+import { Route as CelulasNewRouteImport } from './routes/celulas/new'
+import { Route as CelulasIdRouteImport } from './routes/celulas/$id'
+import { Route as PatrimonioChar91idChar93IndexRouteImport } from './routes/patrimonio/[id]/index'
+import { Route as PatrimonioChar91idChar93EditarRouteImport } from './routes/patrimonio/[id]/editar'
+import { Route as PatrimonioEmprestimosNovoRouteImport } from './routes/patrimonio/emprestimos/novo'
+import { Route as MinisteriosIdEditRouteImport } from './routes/ministerios/$id/edit'
+import { Route as MembrosIdEditRouteImport } from './routes/membros/$id/edit'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -34,18 +73,295 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RelatoriosIndexRoute = RelatoriosIndexRouteImport.update({
+  id: '/relatorios/',
+  path: '/relatorios/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerfilIndexRoute = PerfilIndexRouteImport.update({
+  id: '/perfil/',
+  path: '/perfil/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatrimonioIndexRoute = PatrimonioIndexRouteImport.update({
+  id: '/patrimonio/',
+  path: '/patrimonio/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificacoesIndexRoute = NotificacoesIndexRouteImport.update({
+  id: '/notificacoes/',
+  path: '/notificacoes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MinisteriosIndexRoute = MinisteriosIndexRouteImport.update({
+  id: '/ministerios/',
+  path: '/ministerios/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembrosIndexRoute = MembrosIndexRouteImport.update({
+  id: '/membros/',
+  path: '/membros/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceiroIndexRoute = FinanceiroIndexRouteImport.update({
+  id: '/financeiro/',
+  path: '/financeiro/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventosIndexRoute = EventosIndexRouteImport.update({
+  id: '/eventos/',
+  path: '/eventos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EscolaBiblicaIndexRoute = EscolaBiblicaIndexRouteImport.update({
+  id: '/escola-biblica/',
+  path: '/escola-biblica/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfiguracoesIndexRoute = ConfiguracoesIndexRouteImport.update({
+  id: '/configuracoes/',
+  path: '/configuracoes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CelulasIndexRoute = CelulasIndexRouteImport.update({
+  id: '/celulas/',
+  path: '/celulas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArquivosIndexRoute = ArquivosIndexRouteImport.update({
+  id: '/arquivos/',
+  path: '/arquivos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosPastoralRoute = RelatoriosPastoralRouteImport.update({
+  id: '/relatorios/pastoral',
+  path: '/relatorios/pastoral',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosMembrosRoute = RelatoriosMembrosRouteImport.update({
+  id: '/relatorios/membros',
+  path: '/relatorios/membros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosFinanceiroRoute = RelatoriosFinanceiroRouteImport.update({
+  id: '/relatorios/financeiro',
+  path: '/relatorios/financeiro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosCelulasRoute = RelatoriosCelulasRouteImport.update({
+  id: '/relatorios/celulas',
+  path: '/relatorios/celulas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerfilDisponibilidadeRoute = PerfilDisponibilidadeRouteImport.update({
+  id: '/perfil/disponibilidade',
+  path: '/perfil/disponibilidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatrimonioNovoRoute = PatrimonioNovoRouteImport.update({
+  id: '/patrimonio/novo',
+  path: '/patrimonio/novo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MinisteriosNewRoute = MinisteriosNewRouteImport.update({
+  id: '/ministerios/new',
+  path: '/ministerios/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MinisteriosIdRoute = MinisteriosIdRouteImport.update({
+  id: '/ministerios/$id',
+  path: '/ministerios/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembrosNewRoute = MembrosNewRouteImport.update({
+  id: '/membros/new',
+  path: '/membros/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembrosIdRoute = MembrosIdRouteImport.update({
+  id: '/membros/$id',
+  path: '/membros/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceiroLancamentosRoute = FinanceiroLancamentosRouteImport.update({
+  id: '/financeiro/lancamentos',
+  path: '/financeiro/lancamentos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceiroContasRoute = FinanceiroContasRouteImport.update({
+  id: '/financeiro/contas',
+  path: '/financeiro/contas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceiroCategoriasRoute = FinanceiroCategoriasRouteImport.update({
+  id: '/financeiro/categorias',
+  path: '/financeiro/categorias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventosNewRoute = EventosNewRouteImport.update({
+  id: '/eventos/new',
+  path: '/eventos/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventosIdRoute = EventosIdRouteImport.update({
+  id: '/eventos/$id',
+  path: '/eventos/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EscolaBiblicaTurmasRoute = EscolaBiblicaTurmasRouteImport.update({
+  id: '/escola-biblica/turmas',
+  path: '/escola-biblica/turmas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EscolaBiblicaMatriculasRoute = EscolaBiblicaMatriculasRouteImport.update({
+  id: '/escola-biblica/matriculas',
+  path: '/escola-biblica/matriculas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EscolaBiblicaCursosRoute = EscolaBiblicaCursosRouteImport.update({
+  id: '/escola-biblica/cursos',
+  path: '/escola-biblica/cursos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EscolaBiblicaCertificadosRoute =
+  EscolaBiblicaCertificadosRouteImport.update({
+    id: '/escola-biblica/certificados',
+    path: '/escola-biblica/certificados',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CelulasNewRoute = CelulasNewRouteImport.update({
+  id: '/celulas/new',
+  path: '/celulas/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CelulasIdRoute = CelulasIdRouteImport.update({
+  id: '/celulas/$id',
+  path: '/celulas/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatrimonioChar91idChar93IndexRoute =
+  PatrimonioChar91idChar93IndexRouteImport.update({
+    id: '/patrimonio/id/',
+    path: '/patrimonio/id/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const PatrimonioChar91idChar93EditarRoute =
+  PatrimonioChar91idChar93EditarRouteImport.update({
+    id: '/patrimonio/id/editar',
+    path: '/patrimonio/id/editar',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const PatrimonioEmprestimosNovoRoute =
+  PatrimonioEmprestimosNovoRouteImport.update({
+    id: '/patrimonio/emprestimos/novo',
+    path: '/patrimonio/emprestimos/novo',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const MinisteriosIdEditRoute = MinisteriosIdEditRouteImport.update({
+  id: '/edit',
+  path: '/edit',
+  getParentRoute: () => MinisteriosIdRoute,
+} as any)
+const MembrosIdEditRoute = MembrosIdEditRouteImport.update({
+  id: '/edit',
+  path: '/edit',
+  getParentRoute: () => MembrosIdRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/celulas/$id': typeof CelulasIdRoute
+  '/celulas/new': typeof CelulasNewRoute
+  '/escola-biblica/certificados': typeof EscolaBiblicaCertificadosRoute
+  '/escola-biblica/cursos': typeof EscolaBiblicaCursosRoute
+  '/escola-biblica/matriculas': typeof EscolaBiblicaMatriculasRoute
+  '/escola-biblica/turmas': typeof EscolaBiblicaTurmasRoute
+  '/eventos/$id': typeof EventosIdRoute
+  '/eventos/new': typeof EventosNewRoute
+  '/financeiro/categorias': typeof FinanceiroCategoriasRoute
+  '/financeiro/contas': typeof FinanceiroContasRoute
+  '/financeiro/lancamentos': typeof FinanceiroLancamentosRoute
+  '/membros/$id': typeof MembrosIdRouteWithChildren
+  '/membros/new': typeof MembrosNewRoute
+  '/ministerios/$id': typeof MinisteriosIdRouteWithChildren
+  '/ministerios/new': typeof MinisteriosNewRoute
+  '/patrimonio/novo': typeof PatrimonioNovoRoute
+  '/perfil/disponibilidade': typeof PerfilDisponibilidadeRoute
+  '/relatorios/celulas': typeof RelatoriosCelulasRoute
+  '/relatorios/financeiro': typeof RelatoriosFinanceiroRoute
+  '/relatorios/membros': typeof RelatoriosMembrosRoute
+  '/relatorios/pastoral': typeof RelatoriosPastoralRoute
+  '/arquivos/': typeof ArquivosIndexRoute
+  '/celulas/': typeof CelulasIndexRoute
+  '/configuracoes/': typeof ConfiguracoesIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/escola-biblica/': typeof EscolaBiblicaIndexRoute
+  '/eventos/': typeof EventosIndexRoute
+  '/financeiro/': typeof FinanceiroIndexRoute
+  '/membros/': typeof MembrosIndexRoute
+  '/ministerios/': typeof MinisteriosIndexRoute
+  '/notificacoes/': typeof NotificacoesIndexRoute
+  '/patrimonio/': typeof PatrimonioIndexRoute
+  '/perfil/': typeof PerfilIndexRoute
+  '/relatorios/': typeof RelatoriosIndexRoute
+  '/membros/$id/edit': typeof MembrosIdEditRoute
+  '/ministerios/$id/edit': typeof MinisteriosIdEditRoute
+  '/patrimonio/emprestimos/novo': typeof PatrimonioEmprestimosNovoRoute
+  '/patrimonio/id/editar': typeof PatrimonioChar91idChar93EditarRoute
+  '/patrimonio/id/': typeof PatrimonioChar91idChar93IndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/celulas/$id': typeof CelulasIdRoute
+  '/celulas/new': typeof CelulasNewRoute
+  '/escola-biblica/certificados': typeof EscolaBiblicaCertificadosRoute
+  '/escola-biblica/cursos': typeof EscolaBiblicaCursosRoute
+  '/escola-biblica/matriculas': typeof EscolaBiblicaMatriculasRoute
+  '/escola-biblica/turmas': typeof EscolaBiblicaTurmasRoute
+  '/eventos/$id': typeof EventosIdRoute
+  '/eventos/new': typeof EventosNewRoute
+  '/financeiro/categorias': typeof FinanceiroCategoriasRoute
+  '/financeiro/contas': typeof FinanceiroContasRoute
+  '/financeiro/lancamentos': typeof FinanceiroLancamentosRoute
+  '/membros/$id': typeof MembrosIdRouteWithChildren
+  '/membros/new': typeof MembrosNewRoute
+  '/ministerios/$id': typeof MinisteriosIdRouteWithChildren
+  '/ministerios/new': typeof MinisteriosNewRoute
+  '/patrimonio/novo': typeof PatrimonioNovoRoute
+  '/perfil/disponibilidade': typeof PerfilDisponibilidadeRoute
+  '/relatorios/celulas': typeof RelatoriosCelulasRoute
+  '/relatorios/financeiro': typeof RelatoriosFinanceiroRoute
+  '/relatorios/membros': typeof RelatoriosMembrosRoute
+  '/relatorios/pastoral': typeof RelatoriosPastoralRoute
+  '/arquivos': typeof ArquivosIndexRoute
+  '/celulas': typeof CelulasIndexRoute
+  '/configuracoes': typeof ConfiguracoesIndexRoute
+  '/dashboard': typeof DashboardIndexRoute
+  '/escola-biblica': typeof EscolaBiblicaIndexRoute
+  '/eventos': typeof EventosIndexRoute
+  '/financeiro': typeof FinanceiroIndexRoute
+  '/membros': typeof MembrosIndexRoute
+  '/ministerios': typeof MinisteriosIndexRoute
+  '/notificacoes': typeof NotificacoesIndexRoute
+  '/patrimonio': typeof PatrimonioIndexRoute
+  '/perfil': typeof PerfilIndexRoute
+  '/relatorios': typeof RelatoriosIndexRoute
+  '/membros/$id/edit': typeof MembrosIdEditRoute
+  '/ministerios/$id/edit': typeof MinisteriosIdEditRoute
+  '/patrimonio/emprestimos/novo': typeof PatrimonioEmprestimosNovoRoute
+  '/patrimonio/id/editar': typeof PatrimonioChar91idChar93EditarRoute
+  '/patrimonio/id': typeof PatrimonioChar91idChar93IndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +369,182 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/celulas/$id': typeof CelulasIdRoute
+  '/celulas/new': typeof CelulasNewRoute
+  '/escola-biblica/certificados': typeof EscolaBiblicaCertificadosRoute
+  '/escola-biblica/cursos': typeof EscolaBiblicaCursosRoute
+  '/escola-biblica/matriculas': typeof EscolaBiblicaMatriculasRoute
+  '/escola-biblica/turmas': typeof EscolaBiblicaTurmasRoute
+  '/eventos/$id': typeof EventosIdRoute
+  '/eventos/new': typeof EventosNewRoute
+  '/financeiro/categorias': typeof FinanceiroCategoriasRoute
+  '/financeiro/contas': typeof FinanceiroContasRoute
+  '/financeiro/lancamentos': typeof FinanceiroLancamentosRoute
+  '/membros/$id': typeof MembrosIdRouteWithChildren
+  '/membros/new': typeof MembrosNewRoute
+  '/ministerios/$id': typeof MinisteriosIdRouteWithChildren
+  '/ministerios/new': typeof MinisteriosNewRoute
+  '/patrimonio/novo': typeof PatrimonioNovoRoute
+  '/perfil/disponibilidade': typeof PerfilDisponibilidadeRoute
+  '/relatorios/celulas': typeof RelatoriosCelulasRoute
+  '/relatorios/financeiro': typeof RelatoriosFinanceiroRoute
+  '/relatorios/membros': typeof RelatoriosMembrosRoute
+  '/relatorios/pastoral': typeof RelatoriosPastoralRoute
+  '/arquivos/': typeof ArquivosIndexRoute
+  '/celulas/': typeof CelulasIndexRoute
+  '/configuracoes/': typeof ConfiguracoesIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/escola-biblica/': typeof EscolaBiblicaIndexRoute
+  '/eventos/': typeof EventosIndexRoute
+  '/financeiro/': typeof FinanceiroIndexRoute
+  '/membros/': typeof MembrosIndexRoute
+  '/ministerios/': typeof MinisteriosIndexRoute
+  '/notificacoes/': typeof NotificacoesIndexRoute
+  '/patrimonio/': typeof PatrimonioIndexRoute
+  '/perfil/': typeof PerfilIndexRoute
+  '/relatorios/': typeof RelatoriosIndexRoute
+  '/membros/$id/edit': typeof MembrosIdEditRoute
+  '/ministerios/$id/edit': typeof MinisteriosIdEditRoute
+  '/patrimonio/emprestimos/novo': typeof PatrimonioEmprestimosNovoRoute
+  '/patrimonio/id/editar': typeof PatrimonioChar91idChar93EditarRoute
+  '/patrimonio/id/': typeof PatrimonioChar91idChar93IndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/login' | '/register'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/login'
+    | '/register'
+    | '/celulas/$id'
+    | '/celulas/new'
+    | '/escola-biblica/certificados'
+    | '/escola-biblica/cursos'
+    | '/escola-biblica/matriculas'
+    | '/escola-biblica/turmas'
+    | '/eventos/$id'
+    | '/eventos/new'
+    | '/financeiro/categorias'
+    | '/financeiro/contas'
+    | '/financeiro/lancamentos'
+    | '/membros/$id'
+    | '/membros/new'
+    | '/ministerios/$id'
+    | '/ministerios/new'
+    | '/patrimonio/novo'
+    | '/perfil/disponibilidade'
+    | '/relatorios/celulas'
+    | '/relatorios/financeiro'
+    | '/relatorios/membros'
+    | '/relatorios/pastoral'
+    | '/arquivos/'
+    | '/celulas/'
+    | '/configuracoes/'
+    | '/dashboard/'
+    | '/escola-biblica/'
+    | '/eventos/'
+    | '/financeiro/'
+    | '/membros/'
+    | '/ministerios/'
+    | '/notificacoes/'
+    | '/patrimonio/'
+    | '/perfil/'
+    | '/relatorios/'
+    | '/membros/$id/edit'
+    | '/ministerios/$id/edit'
+    | '/patrimonio/emprestimos/novo'
+    | '/patrimonio/id/editar'
+    | '/patrimonio/id/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/login' | '/register'
-  id: '__root__' | '/' | '/about' | '/login' | '/register'
+  to:
+    | '/'
+    | '/about'
+    | '/login'
+    | '/register'
+    | '/celulas/$id'
+    | '/celulas/new'
+    | '/escola-biblica/certificados'
+    | '/escola-biblica/cursos'
+    | '/escola-biblica/matriculas'
+    | '/escola-biblica/turmas'
+    | '/eventos/$id'
+    | '/eventos/new'
+    | '/financeiro/categorias'
+    | '/financeiro/contas'
+    | '/financeiro/lancamentos'
+    | '/membros/$id'
+    | '/membros/new'
+    | '/ministerios/$id'
+    | '/ministerios/new'
+    | '/patrimonio/novo'
+    | '/perfil/disponibilidade'
+    | '/relatorios/celulas'
+    | '/relatorios/financeiro'
+    | '/relatorios/membros'
+    | '/relatorios/pastoral'
+    | '/arquivos'
+    | '/celulas'
+    | '/configuracoes'
+    | '/dashboard'
+    | '/escola-biblica'
+    | '/eventos'
+    | '/financeiro'
+    | '/membros'
+    | '/ministerios'
+    | '/notificacoes'
+    | '/patrimonio'
+    | '/perfil'
+    | '/relatorios'
+    | '/membros/$id/edit'
+    | '/ministerios/$id/edit'
+    | '/patrimonio/emprestimos/novo'
+    | '/patrimonio/id/editar'
+    | '/patrimonio/id'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/login'
+    | '/register'
+    | '/celulas/$id'
+    | '/celulas/new'
+    | '/escola-biblica/certificados'
+    | '/escola-biblica/cursos'
+    | '/escola-biblica/matriculas'
+    | '/escola-biblica/turmas'
+    | '/eventos/$id'
+    | '/eventos/new'
+    | '/financeiro/categorias'
+    | '/financeiro/contas'
+    | '/financeiro/lancamentos'
+    | '/membros/$id'
+    | '/membros/new'
+    | '/ministerios/$id'
+    | '/ministerios/new'
+    | '/patrimonio/novo'
+    | '/perfil/disponibilidade'
+    | '/relatorios/celulas'
+    | '/relatorios/financeiro'
+    | '/relatorios/membros'
+    | '/relatorios/pastoral'
+    | '/arquivos/'
+    | '/celulas/'
+    | '/configuracoes/'
+    | '/dashboard/'
+    | '/escola-biblica/'
+    | '/eventos/'
+    | '/financeiro/'
+    | '/membros/'
+    | '/ministerios/'
+    | '/notificacoes/'
+    | '/patrimonio/'
+    | '/perfil/'
+    | '/relatorios/'
+    | '/membros/$id/edit'
+    | '/ministerios/$id/edit'
+    | '/patrimonio/emprestimos/novo'
+    | '/patrimonio/id/editar'
+    | '/patrimonio/id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +552,43 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
+  CelulasIdRoute: typeof CelulasIdRoute
+  CelulasNewRoute: typeof CelulasNewRoute
+  EscolaBiblicaCertificadosRoute: typeof EscolaBiblicaCertificadosRoute
+  EscolaBiblicaCursosRoute: typeof EscolaBiblicaCursosRoute
+  EscolaBiblicaMatriculasRoute: typeof EscolaBiblicaMatriculasRoute
+  EscolaBiblicaTurmasRoute: typeof EscolaBiblicaTurmasRoute
+  EventosIdRoute: typeof EventosIdRoute
+  EventosNewRoute: typeof EventosNewRoute
+  FinanceiroCategoriasRoute: typeof FinanceiroCategoriasRoute
+  FinanceiroContasRoute: typeof FinanceiroContasRoute
+  FinanceiroLancamentosRoute: typeof FinanceiroLancamentosRoute
+  MembrosIdRoute: typeof MembrosIdRouteWithChildren
+  MembrosNewRoute: typeof MembrosNewRoute
+  MinisteriosIdRoute: typeof MinisteriosIdRouteWithChildren
+  MinisteriosNewRoute: typeof MinisteriosNewRoute
+  PatrimonioNovoRoute: typeof PatrimonioNovoRoute
+  PerfilDisponibilidadeRoute: typeof PerfilDisponibilidadeRoute
+  RelatoriosCelulasRoute: typeof RelatoriosCelulasRoute
+  RelatoriosFinanceiroRoute: typeof RelatoriosFinanceiroRoute
+  RelatoriosMembrosRoute: typeof RelatoriosMembrosRoute
+  RelatoriosPastoralRoute: typeof RelatoriosPastoralRoute
+  ArquivosIndexRoute: typeof ArquivosIndexRoute
+  CelulasIndexRoute: typeof CelulasIndexRoute
+  ConfiguracoesIndexRoute: typeof ConfiguracoesIndexRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  EscolaBiblicaIndexRoute: typeof EscolaBiblicaIndexRoute
+  EventosIndexRoute: typeof EventosIndexRoute
+  FinanceiroIndexRoute: typeof FinanceiroIndexRoute
+  MembrosIndexRoute: typeof MembrosIndexRoute
+  MinisteriosIndexRoute: typeof MinisteriosIndexRoute
+  NotificacoesIndexRoute: typeof NotificacoesIndexRoute
+  PatrimonioIndexRoute: typeof PatrimonioIndexRoute
+  PerfilIndexRoute: typeof PerfilIndexRoute
+  RelatoriosIndexRoute: typeof RelatoriosIndexRoute
+  PatrimonioEmprestimosNovoRoute: typeof PatrimonioEmprestimosNovoRoute
+  PatrimonioChar91idChar93EditarRoute: typeof PatrimonioChar91idChar93EditarRoute
+  PatrimonioChar91idChar93IndexRoute: typeof PatrimonioChar91idChar93IndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,14 +621,348 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/relatorios/': {
+      id: '/relatorios/'
+      path: '/relatorios'
+      fullPath: '/relatorios/'
+      preLoaderRoute: typeof RelatoriosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perfil/': {
+      id: '/perfil/'
+      path: '/perfil'
+      fullPath: '/perfil/'
+      preLoaderRoute: typeof PerfilIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patrimonio/': {
+      id: '/patrimonio/'
+      path: '/patrimonio'
+      fullPath: '/patrimonio/'
+      preLoaderRoute: typeof PatrimonioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notificacoes/': {
+      id: '/notificacoes/'
+      path: '/notificacoes'
+      fullPath: '/notificacoes/'
+      preLoaderRoute: typeof NotificacoesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ministerios/': {
+      id: '/ministerios/'
+      path: '/ministerios'
+      fullPath: '/ministerios/'
+      preLoaderRoute: typeof MinisteriosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membros/': {
+      id: '/membros/'
+      path: '/membros'
+      fullPath: '/membros/'
+      preLoaderRoute: typeof MembrosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financeiro/': {
+      id: '/financeiro/'
+      path: '/financeiro'
+      fullPath: '/financeiro/'
+      preLoaderRoute: typeof FinanceiroIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eventos/': {
+      id: '/eventos/'
+      path: '/eventos'
+      fullPath: '/eventos/'
+      preLoaderRoute: typeof EventosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/escola-biblica/': {
+      id: '/escola-biblica/'
+      path: '/escola-biblica'
+      fullPath: '/escola-biblica/'
+      preLoaderRoute: typeof EscolaBiblicaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/configuracoes/': {
+      id: '/configuracoes/'
+      path: '/configuracoes'
+      fullPath: '/configuracoes/'
+      preLoaderRoute: typeof ConfiguracoesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/celulas/': {
+      id: '/celulas/'
+      path: '/celulas'
+      fullPath: '/celulas/'
+      preLoaderRoute: typeof CelulasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/arquivos/': {
+      id: '/arquivos/'
+      path: '/arquivos'
+      fullPath: '/arquivos/'
+      preLoaderRoute: typeof ArquivosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios/pastoral': {
+      id: '/relatorios/pastoral'
+      path: '/relatorios/pastoral'
+      fullPath: '/relatorios/pastoral'
+      preLoaderRoute: typeof RelatoriosPastoralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios/membros': {
+      id: '/relatorios/membros'
+      path: '/relatorios/membros'
+      fullPath: '/relatorios/membros'
+      preLoaderRoute: typeof RelatoriosMembrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios/financeiro': {
+      id: '/relatorios/financeiro'
+      path: '/relatorios/financeiro'
+      fullPath: '/relatorios/financeiro'
+      preLoaderRoute: typeof RelatoriosFinanceiroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios/celulas': {
+      id: '/relatorios/celulas'
+      path: '/relatorios/celulas'
+      fullPath: '/relatorios/celulas'
+      preLoaderRoute: typeof RelatoriosCelulasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perfil/disponibilidade': {
+      id: '/perfil/disponibilidade'
+      path: '/perfil/disponibilidade'
+      fullPath: '/perfil/disponibilidade'
+      preLoaderRoute: typeof PerfilDisponibilidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patrimonio/novo': {
+      id: '/patrimonio/novo'
+      path: '/patrimonio/novo'
+      fullPath: '/patrimonio/novo'
+      preLoaderRoute: typeof PatrimonioNovoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ministerios/new': {
+      id: '/ministerios/new'
+      path: '/ministerios/new'
+      fullPath: '/ministerios/new'
+      preLoaderRoute: typeof MinisteriosNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ministerios/$id': {
+      id: '/ministerios/$id'
+      path: '/ministerios/$id'
+      fullPath: '/ministerios/$id'
+      preLoaderRoute: typeof MinisteriosIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membros/new': {
+      id: '/membros/new'
+      path: '/membros/new'
+      fullPath: '/membros/new'
+      preLoaderRoute: typeof MembrosNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membros/$id': {
+      id: '/membros/$id'
+      path: '/membros/$id'
+      fullPath: '/membros/$id'
+      preLoaderRoute: typeof MembrosIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financeiro/lancamentos': {
+      id: '/financeiro/lancamentos'
+      path: '/financeiro/lancamentos'
+      fullPath: '/financeiro/lancamentos'
+      preLoaderRoute: typeof FinanceiroLancamentosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financeiro/contas': {
+      id: '/financeiro/contas'
+      path: '/financeiro/contas'
+      fullPath: '/financeiro/contas'
+      preLoaderRoute: typeof FinanceiroContasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financeiro/categorias': {
+      id: '/financeiro/categorias'
+      path: '/financeiro/categorias'
+      fullPath: '/financeiro/categorias'
+      preLoaderRoute: typeof FinanceiroCategoriasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eventos/new': {
+      id: '/eventos/new'
+      path: '/eventos/new'
+      fullPath: '/eventos/new'
+      preLoaderRoute: typeof EventosNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eventos/$id': {
+      id: '/eventos/$id'
+      path: '/eventos/$id'
+      fullPath: '/eventos/$id'
+      preLoaderRoute: typeof EventosIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/escola-biblica/turmas': {
+      id: '/escola-biblica/turmas'
+      path: '/escola-biblica/turmas'
+      fullPath: '/escola-biblica/turmas'
+      preLoaderRoute: typeof EscolaBiblicaTurmasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/escola-biblica/matriculas': {
+      id: '/escola-biblica/matriculas'
+      path: '/escola-biblica/matriculas'
+      fullPath: '/escola-biblica/matriculas'
+      preLoaderRoute: typeof EscolaBiblicaMatriculasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/escola-biblica/cursos': {
+      id: '/escola-biblica/cursos'
+      path: '/escola-biblica/cursos'
+      fullPath: '/escola-biblica/cursos'
+      preLoaderRoute: typeof EscolaBiblicaCursosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/escola-biblica/certificados': {
+      id: '/escola-biblica/certificados'
+      path: '/escola-biblica/certificados'
+      fullPath: '/escola-biblica/certificados'
+      preLoaderRoute: typeof EscolaBiblicaCertificadosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/celulas/new': {
+      id: '/celulas/new'
+      path: '/celulas/new'
+      fullPath: '/celulas/new'
+      preLoaderRoute: typeof CelulasNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/celulas/$id': {
+      id: '/celulas/$id'
+      path: '/celulas/$id'
+      fullPath: '/celulas/$id'
+      preLoaderRoute: typeof CelulasIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patrimonio/id/': {
+      id: '/patrimonio/id/'
+      path: '/patrimonio/id'
+      fullPath: '/patrimonio/id/'
+      preLoaderRoute: typeof PatrimonioChar91idChar93IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patrimonio/id/editar': {
+      id: '/patrimonio/id/editar'
+      path: '/patrimonio/id/editar'
+      fullPath: '/patrimonio/id/editar'
+      preLoaderRoute: typeof PatrimonioChar91idChar93EditarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patrimonio/emprestimos/novo': {
+      id: '/patrimonio/emprestimos/novo'
+      path: '/patrimonio/emprestimos/novo'
+      fullPath: '/patrimonio/emprestimos/novo'
+      preLoaderRoute: typeof PatrimonioEmprestimosNovoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ministerios/$id/edit': {
+      id: '/ministerios/$id/edit'
+      path: '/edit'
+      fullPath: '/ministerios/$id/edit'
+      preLoaderRoute: typeof MinisteriosIdEditRouteImport
+      parentRoute: typeof MinisteriosIdRoute
+    }
+    '/membros/$id/edit': {
+      id: '/membros/$id/edit'
+      path: '/edit'
+      fullPath: '/membros/$id/edit'
+      preLoaderRoute: typeof MembrosIdEditRouteImport
+      parentRoute: typeof MembrosIdRoute
+    }
   }
 }
+
+interface MembrosIdRouteChildren {
+  MembrosIdEditRoute: typeof MembrosIdEditRoute
+}
+
+const MembrosIdRouteChildren: MembrosIdRouteChildren = {
+  MembrosIdEditRoute: MembrosIdEditRoute,
+}
+
+const MembrosIdRouteWithChildren = MembrosIdRoute._addFileChildren(
+  MembrosIdRouteChildren,
+)
+
+interface MinisteriosIdRouteChildren {
+  MinisteriosIdEditRoute: typeof MinisteriosIdEditRoute
+}
+
+const MinisteriosIdRouteChildren: MinisteriosIdRouteChildren = {
+  MinisteriosIdEditRoute: MinisteriosIdEditRoute,
+}
+
+const MinisteriosIdRouteWithChildren = MinisteriosIdRoute._addFileChildren(
+  MinisteriosIdRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
+  CelulasIdRoute: CelulasIdRoute,
+  CelulasNewRoute: CelulasNewRoute,
+  EscolaBiblicaCertificadosRoute: EscolaBiblicaCertificadosRoute,
+  EscolaBiblicaCursosRoute: EscolaBiblicaCursosRoute,
+  EscolaBiblicaMatriculasRoute: EscolaBiblicaMatriculasRoute,
+  EscolaBiblicaTurmasRoute: EscolaBiblicaTurmasRoute,
+  EventosIdRoute: EventosIdRoute,
+  EventosNewRoute: EventosNewRoute,
+  FinanceiroCategoriasRoute: FinanceiroCategoriasRoute,
+  FinanceiroContasRoute: FinanceiroContasRoute,
+  FinanceiroLancamentosRoute: FinanceiroLancamentosRoute,
+  MembrosIdRoute: MembrosIdRouteWithChildren,
+  MembrosNewRoute: MembrosNewRoute,
+  MinisteriosIdRoute: MinisteriosIdRouteWithChildren,
+  MinisteriosNewRoute: MinisteriosNewRoute,
+  PatrimonioNovoRoute: PatrimonioNovoRoute,
+  PerfilDisponibilidadeRoute: PerfilDisponibilidadeRoute,
+  RelatoriosCelulasRoute: RelatoriosCelulasRoute,
+  RelatoriosFinanceiroRoute: RelatoriosFinanceiroRoute,
+  RelatoriosMembrosRoute: RelatoriosMembrosRoute,
+  RelatoriosPastoralRoute: RelatoriosPastoralRoute,
+  ArquivosIndexRoute: ArquivosIndexRoute,
+  CelulasIndexRoute: CelulasIndexRoute,
+  ConfiguracoesIndexRoute: ConfiguracoesIndexRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+  EscolaBiblicaIndexRoute: EscolaBiblicaIndexRoute,
+  EventosIndexRoute: EventosIndexRoute,
+  FinanceiroIndexRoute: FinanceiroIndexRoute,
+  MembrosIndexRoute: MembrosIndexRoute,
+  MinisteriosIndexRoute: MinisteriosIndexRoute,
+  NotificacoesIndexRoute: NotificacoesIndexRoute,
+  PatrimonioIndexRoute: PatrimonioIndexRoute,
+  PerfilIndexRoute: PerfilIndexRoute,
+  RelatoriosIndexRoute: RelatoriosIndexRoute,
+  PatrimonioEmprestimosNovoRoute: PatrimonioEmprestimosNovoRoute,
+  PatrimonioChar91idChar93EditarRoute: PatrimonioChar91idChar93EditarRoute,
+  PatrimonioChar91idChar93IndexRoute: PatrimonioChar91idChar93IndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -8,6 +8,7 @@ export interface User {
   role: Role
   firstName?: string
   lastName?: string
+  membro_id?: string
 }
 
 export interface AuthResponse {
