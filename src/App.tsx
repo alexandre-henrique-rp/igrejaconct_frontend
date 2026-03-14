@@ -1,6 +1,6 @@
 import { RouterProvider } from '@tanstack/react-router';
 import { AuthProvider } from '@/contexts/AuthContext';
-import { ThemeProvider } from '@/contexts/ThemeContext';
+import { ThemeProvider } from '@/contexts/ThemeProvider';
 import { ToastProvider } from '@/contexts/ToastContext';
 import { getRouter } from '@/router';
 

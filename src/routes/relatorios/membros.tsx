@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { useQuery } from '@tanstack/react-query';
 import api from '../../services/api-client';
 import { 
@@ -15,10 +17,20 @@ import {
 } from 'lucide-react';
 
 export const Route = createFileRoute('/relatorios/membros')({
-  component: MembrosDashboard,
+  component: MembrosPage,
 });
 
 const COLORS = ['#2563eb', '#16a34a', '#dc2626', '#ca8a04', '#9333ea', '#475569'];
+
+function MembrosPage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <MembrosDashboard />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
+}
 
 function MembrosDashboard() {
   const { data: dashboard, isLoading, error } = useQuery({

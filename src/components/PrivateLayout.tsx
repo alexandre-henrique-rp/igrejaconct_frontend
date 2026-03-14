@@ -21,12 +21,12 @@ export const PrivateLayout: React.FC<PrivateLayoutProps> = ({ children }) => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="min-h-screen bg-background text-primary"
+      className=""
     >
-      <div className="container mx-auto p-4">
+      <div className="">
         {children}
-        <div className="mt-12 text-[var(--sea-ink-soft)] text-sm text-center">
-          © {new Date().getFullYear()} IgrejaConnect
+        <div className="mt-12 text-gray-600 text-sm text-center">
+          © 2026 IgrejaConnect
         </div>
       </div>
     </motion.div>

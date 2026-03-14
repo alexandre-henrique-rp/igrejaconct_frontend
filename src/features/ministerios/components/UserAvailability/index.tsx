@@ -4,6 +4,7 @@ import { ministeriosService, type CreateDisponibilidadeDto } from '@/features/mi
 import { useToast } from '@/contexts/ToastContext'
 import { useAuth } from '@/hooks/useAuth'
 import { Loader2, Save, Calendar, Check } from 'lucide-react'
+import { TitleComponent } from '#/components/TitleComponent'
 
 const DIAS_SEMANA = [
   { id: 0, label: 'Domingo' },
@@ -85,7 +86,7 @@ export function UserAvailability() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center p-12">
-        <Loader2 className="w-8 h-8 animate-spin text-[var(--lagoon)]" />
+        <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
       </div>
     )
   }
@@ -93,58 +94,53 @@ export function UserAvailability() {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-        <div>
-          <h1 className="text-3xl font-bold text-[var(--sea-ink)] flex items-center gap-3">
-            <Calendar className="w-8 h-8 text-[var(--lagoon)]" />
-            Minha Disponibilidade
-          </h1>
-          <p className="text-[var(--sea-ink-soft)] mt-1">
-            Selecione os dias e turnos que você está disponível para servir.
-          </p>
-        </div>
+        <TitleComponent
+          title="Minha Disponibilidade"
+          description="Selecione os dias e turnos que você está disponível para servir."
+        />
         <button
           onClick={handleSave}
           disabled={mutation.isPending}
-          className="flex items-center gap-2 px-6 py-3 bg-[var(--lagoon)] text-white rounded-xl font-bold hover:bg-[var(--lagoon-deep)] transition-all shadow-md hover:shadow-lg disabled:opacity-50"
+          className="flex items-center gap-2 px-6 py-3.5 bg-(--lagoon) text-white rounded-xl hover:bg-(--lagoon-deep) shadow-lg shadow-(--lagoon)/20 hover:shadow-xl hover:scale-[1.02] transition-all text-sm font-bold"
         >
           {mutation.isPending ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
           Salvar Alterações
         </button>
       </div>
 
-      <div className="bg-white border border-[var(--line)] rounded-2xl overflow-hidden shadow-sm">
+      <div className="bg-gray-50/95 rounded-xl border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-gray-50 border-b border-[var(--line)]">
-                <th className="p-6 text-sm font-bold text-[var(--sea-ink-soft)] uppercase tracking-wider">Dia da Semana</th>
+              <tr className="bg-gray-100/90 border-b border-gray-300">
+                <th className="px-4 py-2.5 text-xs font-bold text-gray-600 uppercase tracking-wider">Dia da Semana</th>
                 {TURNOS.map(turno => (
-                  <th key={turno.label} className="p-6 text-sm font-bold text-[var(--sea-ink-soft)] uppercase tracking-wider text-center">
+                  <th key={turno.label} className="px-4 py-2.5 text-xs font-bold text-gray-600 uppercase tracking-wider text-center">
                     {turno.label}
                     <span className="block text-[10px] font-normal lowercase mt-1">{turno.inicio} - {turno.fim}</span>
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-[var(--line)]">
+            <tbody className="divide-y divide-gray-200">
               {DIAS_SEMANA.map(dia => (
-                <tr key={dia.id} className="hover:bg-blue-50/30 transition-colors">
-                  <td className="p-6 font-bold text-[var(--sea-ink)]">{dia.label}</td>
+                <tr key={dia.id} className="bg-white/80 hover:bg-blue-50/30 transition-colors">
+                  <td className="px-4 py-2.5 text-sm font-semibold text-gray-900">{dia.label}</td>
                   {TURNOS.map(turno => {
                     const isActive = selected[`${dia.id}-${turno.inicio}`]
                     return (
-                      <td key={turno.label} className="p-4 text-center">
+                      <td key={turno.label} className="px-4 py-2.5 text-center">
                         <button
                           onClick={() => toggleTurno(dia.id, turno.inicio)}
                           className={`
-                            w-12 h-12 rounded-xl border-2 transition-all flex items-center justify-center mx-auto
+                            w-10 h-10 rounded-lg border-2 transition-all flex items-center justify-center mx-auto
                             ${isActive 
-                              ? 'bg-[var(--lagoon)] border-[var(--lagoon)] text-white shadow-inner scale-95' 
-                              : 'bg-white border-gray-200 text-transparent hover:border-[var(--lagoon)]/50'
+                              ? 'bg-teal-600 border-teal-600 text-white shadow-inner scale-95' 
+                              : 'bg-white border-gray-300 text-transparent hover:border-teal-600/50'
                             }
                           `}
                         >
-                          <Check className={`w-6 h-6 ${isActive ? 'opacity-100' : 'opacity-0'}`} />
+                          <Check className={`w-5 h-5 ${isActive ? 'opacity-100' : 'opacity-0'}`} />
                         </button>
                       </td>
                     )
@@ -156,7 +152,7 @@ export function UserAvailability() {
         </div>
       </div>
 
-      <div className="mt-6 bg-amber-50 border border-amber-100 p-4 rounded-xl flex gap-3 text-amber-800 text-sm">
+      <div className="mt-6 bg-amber-50 border border-amber-200 p-4 rounded-xl flex gap-3 text-amber-800 text-sm">
         <Calendar className="w-5 h-5 shrink-0" />
         <p>
           <strong>Dica:</strong> Suas alterações serão levadas em conta na próxima vez que um líder gerar uma escala automática. 

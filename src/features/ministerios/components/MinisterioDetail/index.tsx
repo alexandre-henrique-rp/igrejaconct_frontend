@@ -92,7 +92,7 @@ export function MinisterioDetail() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center p-12">
-        <Loader2 className="w-8 h-8 animate-spin text-[var(--lagoon)]" />
+        <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
       </div>
     )
   }
@@ -100,10 +100,10 @@ export function MinisterioDetail() {
   if (!ministerio) {
     return (
       <div className="text-center py-12">
-        <p className="text-[var(--sea-ink-soft)]">Ministério não encontrado</p>
+        <p className="text-gray-600">Ministério não encontrado</p>
         <button
           onClick={() => navigate({ to: '/ministerios' })}
-          className="mt-4 text-[var(--lagoon)] hover:underline"
+          className="mt-4 text-teal-600 hover:underline"
         >
           Voltar para lista
         </button>
@@ -115,29 +115,29 @@ export function MinisterioDetail() {
     <div>
       <button
         onClick={() => navigate({ to: '/ministerios' })}
-        className="mb-4 flex items-center gap-2 text-sm text-[var(--sea-ink-soft)] hover:text-[var(--sea-ink)] transition-colors"
+        className="mb-4 flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         Voltar
       </button>
 
-      <div className="bg-white border border-[var(--line)] rounded-xl p-6 mb-6">
+      <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 bg-[var(--lagoon)]/10 rounded-full flex items-center justify-center">
-              <Users className="w-8 h-8 text-[var(--lagoon)]" />
+            <div className="w-16 h-16 bg-teal-600/10 rounded-full flex items-center justify-center">
+              <Users className="w-8 h-8 text-teal-600" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-[var(--sea-ink)]">{ministerio.nome}</h1>
+              <h1 className="text-2xl font-bold text-gray-900">{ministerio.nome}</h1>
               {ministerio.descricao && (
-                <p className="text-sm text-[var(--sea-ink-soft)] mt-1">{ministerio.descricao}</p>
+                <p className="text-sm text-gray-600 mt-1">{ministerio.descricao}</p>
               )}
             </div>
           </div>
           <div className="flex gap-2">
             <button
               onClick={() => navigate({ to: '/ministerios/$id/edit', params: { id } })}
-              className="flex items-center gap-2 px-4 py-2 border border-[var(--line)] rounded-lg hover:bg-[var(--line)] transition-colors"
+              className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors"
             >
               <Pencil className="w-4 h-4" />
               Editar
@@ -158,13 +158,13 @@ export function MinisterioDetail() {
         </div>
       </div>
 
-      <div className="flex gap-1 mb-6 border-b border-[var(--line)]">
+      <div className="flex gap-1 mb-6 border-b border-gray-200">
         <button
           onClick={() => setActiveTab('membros')}
           className={`px-4 py-3 text-sm font-medium transition-colors ${
             activeTab === 'membros' 
-              ? 'text-[var(--lagoon)] border-b-2 border-[var(--lagoon)]' 
-              : 'text-[var(--sea-ink-soft)] hover:text-[var(--sea-ink)]'
+              ? 'text-teal-600 border-b-2 border-teal-600' 
+              : 'text-gray-600 hover:text-gray-900'
           }`}
         >
           Membros ({ministerio.membros?.length || 0})
@@ -173,8 +173,8 @@ export function MinisterioDetail() {
           onClick={() => setActiveTab('escalas')}
           className={`px-4 py-3 text-sm font-medium transition-colors ${
             activeTab === 'escalas' 
-              ? 'text-[var(--lagoon)] border-b-2 border-[var(--lagoon)]' 
-              : 'text-[var(--sea-ink-soft)] hover:text-[var(--sea-ink)]'
+              ? 'text-teal-600 border-b-2 border-teal-600' 
+              : 'text-gray-600 hover:text-gray-900'
           }`}
         >
           Escalas
@@ -183,8 +183,8 @@ export function MinisterioDetail() {
           onClick={() => setActiveTab('frequencia')}
           className={`px-4 py-3 text-sm font-medium transition-colors ${
             activeTab === 'frequencia' 
-              ? 'text-[var(--lagoon)] border-b-2 border-[var(--lagoon)]' 
-              : 'text-[var(--sea-ink-soft)] hover:text-[var(--sea-ink)]'
+              ? 'text-teal-600 border-b-2 border-teal-600' 
+              : 'text-gray-600 hover:text-gray-900'
           }`}
         >
           Frequência
@@ -195,10 +195,10 @@ export function MinisterioDetail() {
         <div>
           {/* ... existing membros code ... */}
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold text-[var(--sea-ink)]">Membros do Ministério</h2>
+            <h2 className="text-lg font-semibold text-gray-900">Membros do Ministério</h2>
             <button
               onClick={() => setShowAddMember(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-[var(--lagoon)] text-white rounded-lg hover:bg-[var(--lagoon-deep)] transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
             >
               <Plus className="w-4 h-4" />
               Adicionar Membro
@@ -206,13 +206,13 @@ export function MinisterioDetail() {
           </div>
 
           {showAddMember && (
-            <div className="bg-white border border-[var(--line)] rounded-xl p-4 mb-4">
-              <h3 className="font-medium text-[var(--sea-ink)] mb-3">Adicionar novo membro</h3>
+            <div className="bg-white border border-gray-200 rounded-xl p-4 mb-4">
+              <h3 className="font-medium text-gray-900 mb-3">Adicionar novo membro</h3>
               <div className="flex gap-4">
                 <select
                   value={selectedMembroId}
                   onChange={(e) => setSelectedMembroId(e.target.value)}
-                  className="flex-1 px-4 py-2 border border-[var(--line)] rounded-lg"
+                  className="flex-1 px-4 py-2 border border-gray-200 rounded-lg"
                 >
                   <option value="">Selecione um membro</option>
                   {membrosDisponiveis.map((membro) => (
@@ -226,7 +226,7 @@ export function MinisterioDetail() {
                   value={selectedFuncao}
                   onChange={(e) => setSelectedFuncao(e.target.value)}
                   placeholder="Função (opcional)"
-                  className="flex-1 px-4 py-2 border border-[var(--line)] rounded-lg"
+                  className="flex-1 px-4 py-2 border border-gray-200 rounded-lg"
                 />
                 <button
                   onClick={handleAddMembro}
@@ -241,7 +241,7 @@ export function MinisterioDetail() {
                     setSelectedMembroId('')
                     setSelectedFuncao('')
                   }}
-                  className="p-2 border border-[var(--line)] rounded-lg hover:bg-[var(--line)]"
+                  className="p-2 border border-gray-200 rounded-lg hover:bg-gray-100"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -251,15 +251,15 @@ export function MinisterioDetail() {
 
           <div className="grid gap-4">
             {ministerio.membros?.map((m) => (
-              <div key={m.id} className="bg-white border border-[var(--line)] rounded-xl p-4 flex items-center justify-between">
+              <div key={m.id} className="bg-white border border-gray-200 rounded-xl p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[var(--lagoon)]/10 rounded-full flex items-center justify-center">
-                    <User className="w-5 h-5 text-[var(--lagoon)]" />
+                  <div className="w-10 h-10 bg-teal-600/10 rounded-full flex items-center justify-center">
+                    <User className="w-5 h-5 text-teal-600" />
                   </div>
                   <div>
-                    <p className="font-medium text-[var(--sea-ink)]">{m.membro.nome_completo}</p>
+                    <p className="font-medium text-gray-900">{m.membro.nome_completo}</p>
                     {m.funcao && (
-                      <p className="text-xs text-[var(--sea-ink-soft)]">{m.funcao}</p>
+                      <p className="text-xs text-gray-600">{m.funcao}</p>
                     )}
                   </div>
                 </div>
@@ -276,7 +276,7 @@ export function MinisterioDetail() {
               </div>
             ))}
             {ministerio.membros?.length === 0 && (
-              <div className="text-center py-8 text-[var(--sea-ink-soft)]">
+              <div className="text-center py-8 text-gray-600">
                 <Users className="w-12 h-12 mx-auto mb-4 opacity-50" />
                 <p>Nenhum membro cadastrado</p>
               </div>

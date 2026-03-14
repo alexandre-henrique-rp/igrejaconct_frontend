@@ -1,8 +1,7 @@
 import { Outlet, createRootRouteWithContext } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+
 
 import '../styles.css'
 
@@ -21,12 +20,11 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 
 function RootComponent() {
   return (
-    <div className="min-h-screen bg-[var(--header-bg)] text-[var(--sea-ink)]">
-      <Header />
+    <div className="min-h-screen bg-white text-gray-900">
       <main>
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
       <TanStackDevtools
         config={{
           position: 'bottom-right',

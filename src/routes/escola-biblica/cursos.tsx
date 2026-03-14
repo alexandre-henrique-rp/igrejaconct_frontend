@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { escolaBiblicaService } from '../../features/escola-biblica/escola-biblica-service';
@@ -14,6 +16,16 @@ import {
 } from 'lucide-react';
 import { useToast } from '@/contexts/ToastContext';
 import { SkeletonCard } from '@/components/skeleton/SkeletonCard';
+
+function CursosPage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <CursosList />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
+}
 
 function CursosList() {
   const queryClient = useQueryClient();
@@ -265,5 +277,5 @@ function CursosList() {
 }
 
 export const Route = createFileRoute('/escola-biblica/cursos')({
-  component: CursosList,
+  component: CursosPage,
 });

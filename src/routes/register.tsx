@@ -39,14 +39,14 @@ function RegisterPage() {
   if (success) {
     return (
       <div className="flex min-h-[80vh] items-center justify-center px-4">
-        <div className="w-full max-w-md space-y-8 rounded-2xl bg-white p-8 shadow-xl border border-[var(--line)] text-center">
+        <div className="w-full max-w-md space-y-8 rounded-2xl bg-white p-8 shadow-xl border border-gray-200 text-center">
           <div className="h-16 w-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-10 h-10">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-[var(--sea-ink)]">Cadastro realizado!</h2>
-          <p className="text-[var(--sea-ink-soft)]">Sua conta foi criada com sucesso. Redirecionando para o login...</p>
+          <h2 className="text-2xl font-bold text-gray-900">Cadastro realizado!</h2>
+          <p className="text-gray-600">Sua conta foi criada com sucesso. Redirecionando para o login...</p>
         </div>
       </div>
     )
@@ -54,12 +54,12 @@ function RegisterPage() {
 
   return (
     <div className="flex min-h-[80vh] items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md space-y-8 rounded-2xl bg-white p-8 shadow-xl border border-[var(--line)]">
+      <div className="w-full max-w-md space-y-8 rounded-2xl bg-white p-8 shadow-xl border border-gray-200">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-[var(--sea-ink)]">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900">
             Criar Conta
           </h2>
-          <p className="mt-2 text-sm text-[var(--sea-ink-soft)]">
+          <p className="mt-2 text-sm text-gray-600">
             Registre-se para começar a gerenciar sua igreja
           </p>
         </div>
@@ -86,7 +86,7 @@ function RegisterPage() {
               }}
               children={(field) => (
                 <div>
-                  <label htmlFor={field.name} className="block text-sm font-medium text-[var(--sea-ink)]">
+                  <label htmlFor={field.name} className="block text-sm font-medium text-gray-900">
                     Nome Completo
                   </label>
                   <input
@@ -96,7 +96,7 @@ function RegisterPage() {
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    className="mt-1 block w-full rounded-lg border border-[var(--line)] px-3 py-2 text-[var(--sea-ink)] shadow-sm focus:border-[var(--lagoon)] focus:outline-none focus:ring-1 focus:ring-[var(--lagoon)] sm:text-sm"
+                    className="mt-1 block w-full rounded-lg border border-gray-200 px-3 py-2 text-gray-900 shadow-sm focus:border-teal-600 focus:outline-none focus:ring-1 focus:ring-teal-600 sm:text-sm"
                     placeholder="Seu Nome"
                     required
                   />
@@ -114,7 +114,7 @@ function RegisterPage() {
               }}
               children={(field) => (
                 <div>
-                  <label htmlFor={field.name} className="block text-sm font-medium text-[var(--sea-ink)]">
+                  <label htmlFor={field.name} className="block text-sm font-medium text-gray-900">
                     Email
                   </label>
                   <input
@@ -124,7 +124,7 @@ function RegisterPage() {
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    className="mt-1 block w-full rounded-lg border border-[var(--line)] px-3 py-2 text-[var(--sea-ink)] shadow-sm focus:border-[var(--lagoon)] focus:outline-none focus:ring-1 focus:ring-[var(--lagoon)] sm:text-sm"
+                    className="mt-1 block w-full rounded-lg border border-gray-200 px-3 py-2 text-gray-900 shadow-sm focus:border-teal-600 focus:outline-none focus:ring-1 focus:ring-teal-600 sm:text-sm"
                     placeholder="seu@email.com"
                     required
                   />
@@ -142,7 +142,7 @@ function RegisterPage() {
               }}
               children={(field) => (
                 <div>
-                  <label htmlFor={field.name} className="block text-sm font-medium text-[var(--sea-ink)]">
+                  <label htmlFor={field.name} className="block text-sm font-medium text-gray-900">
                     Senha
                   </label>
                   <input
@@ -152,7 +152,7 @@ function RegisterPage() {
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    className="mt-1 block w-full rounded-lg border border-[var(--line)] px-3 py-2 text-[var(--sea-ink)] shadow-sm focus:border-[var(--lagoon)] focus:outline-none focus:ring-1 focus:ring-[var(--lagoon)] sm:text-sm"
+                    className="mt-1 block w-full rounded-lg border border-gray-200 px-3 py-2 text-gray-900 shadow-sm focus:border-teal-600 focus:outline-none focus:ring-1 focus:ring-teal-600 sm:text-sm"
                     placeholder="••••••••"
                     required
                   />
@@ -167,7 +167,7 @@ function RegisterPage() {
               name="confirmPassword"
               children={(field) => (
                 <div>
-                  <label htmlFor={field.name} className="block text-sm font-medium text-[var(--sea-ink)]">
+                  <label htmlFor={field.name} className="block text-sm font-medium text-gray-900">
                     Confirmar Senha
                   </label>
                   <input
@@ -177,7 +177,7 @@ function RegisterPage() {
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    className="mt-1 block w-full rounded-lg border border-[var(--line)] px-3 py-2 text-[var(--sea-ink)] shadow-sm focus:border-[var(--lagoon)] focus:outline-none focus:ring-1 focus:ring-[var(--lagoon)] sm:text-sm"
+                    className="mt-1 block w-full rounded-lg border border-gray-200 px-3 py-2 text-gray-900 shadow-sm focus:border-teal-600 focus:outline-none focus:ring-1 focus:ring-teal-600 sm:text-sm"
                     placeholder="••••••••"
                     required
                   />
@@ -192,7 +192,7 @@ function RegisterPage() {
               <button
                 type="submit"
                 disabled={!canSubmit || isSubmitting}
-                className="flex w-full justify-center rounded-lg bg-[var(--lagoon)] px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[var(--lagoon-deep)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lagoon)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="flex w-full justify-center rounded-lg bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-teal-700 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-teal-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isSubmitting ? 'Criando conta...' : 'Cadastrar'}
               </button>
@@ -200,8 +200,8 @@ function RegisterPage() {
           />
 
           <div className="text-center text-sm">
-            <span className="text-[var(--sea-ink-soft)]">Já tem uma conta? </span>
-            <Link to="/login" className="font-semibold text-[var(--lagoon)] hover:text-[var(--lagoon-deep)]">
+            <span className="text-gray-600">Já tem uma conta? </span>
+            <Link to="/login" className="font-semibold text-teal-600 hover:text-teal-700">
               Faça login
             </Link>
           </div>

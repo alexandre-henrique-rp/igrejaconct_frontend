@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as R403RouteImport } from './routes/403'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as RelatoriosIndexRouteImport } from './routes/relatorios/index'
 import { Route as PerfilIndexRouteImport } from './routes/perfil/index'
@@ -26,6 +27,7 @@ import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as ConfiguracoesIndexRouteImport } from './routes/configuracoes/index'
 import { Route as CelulasIndexRouteImport } from './routes/celulas/index'
 import { Route as ArquivosIndexRouteImport } from './routes/arquivos/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as RelatoriosPastoralRouteImport } from './routes/relatorios/pastoral'
 import { Route as RelatoriosMembrosRouteImport } from './routes/relatorios/membros'
 import { Route as RelatoriosFinanceiroRouteImport } from './routes/relatorios/financeiro'
@@ -48,10 +50,17 @@ import { Route as EscolaBiblicaCertificadosRouteImport } from './routes/escola-b
 import { Route as CelulasNewRouteImport } from './routes/celulas/new'
 import { Route as CelulasIdRouteImport } from './routes/celulas/$id'
 import { Route as PatrimonioChar91idChar93IndexRouteImport } from './routes/patrimonio/[id]/index'
+import { Route as AdminUsuariosIndexRouteImport } from './routes/admin/usuarios/index'
+import { Route as AdminSistemaIndexRouteImport } from './routes/admin/sistema/index'
+import { Route as AdminPermissoesIndexRouteImport } from './routes/admin/permissoes/index'
+import { Route as AdminIgrejasIndexRouteImport } from './routes/admin/igrejas/index'
 import { Route as PatrimonioChar91idChar93EditarRouteImport } from './routes/patrimonio/[id]/editar'
 import { Route as PatrimonioEmprestimosNovoRouteImport } from './routes/patrimonio/emprestimos/novo'
+import { Route as MinisteriosAdminDisponibilidadeRouteImport } from './routes/ministerios/admin/disponibilidade'
 import { Route as MinisteriosIdEditRouteImport } from './routes/ministerios/$id/edit'
 import { Route as MembrosIdEditRouteImport } from './routes/membros/$id/edit'
+import { Route as AdminUsuariosNovoRouteImport } from './routes/admin/usuarios/novo'
+import { Route as AdminIgrejasNovaRouteImport } from './routes/admin/igrejas/nova'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -66,6 +75,11 @@ const LoginRoute = LoginRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R403Route = R403RouteImport.update({
+  id: '/403',
+  path: '/403',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -136,6 +150,11 @@ const CelulasIndexRoute = CelulasIndexRouteImport.update({
 const ArquivosIndexRoute = ArquivosIndexRouteImport.update({
   id: '/arquivos/',
   path: '/arquivos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RelatoriosPastoralRoute = RelatoriosPastoralRouteImport.update({
@@ -250,6 +269,26 @@ const PatrimonioChar91idChar93IndexRoute =
     path: '/patrimonio/id/',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AdminUsuariosIndexRoute = AdminUsuariosIndexRouteImport.update({
+  id: '/admin/usuarios/',
+  path: '/admin/usuarios/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSistemaIndexRoute = AdminSistemaIndexRouteImport.update({
+  id: '/admin/sistema/',
+  path: '/admin/sistema/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPermissoesIndexRoute = AdminPermissoesIndexRouteImport.update({
+  id: '/admin/permissoes/',
+  path: '/admin/permissoes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIgrejasIndexRoute = AdminIgrejasIndexRouteImport.update({
+  id: '/admin/igrejas/',
+  path: '/admin/igrejas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PatrimonioChar91idChar93EditarRoute =
   PatrimonioChar91idChar93EditarRouteImport.update({
     id: '/patrimonio/id/editar',
@@ -262,6 +301,12 @@ const PatrimonioEmprestimosNovoRoute =
     path: '/patrimonio/emprestimos/novo',
     getParentRoute: () => rootRouteImport,
   } as any)
+const MinisteriosAdminDisponibilidadeRoute =
+  MinisteriosAdminDisponibilidadeRouteImport.update({
+    id: '/ministerios/admin/disponibilidade',
+    path: '/ministerios/admin/disponibilidade',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const MinisteriosIdEditRoute = MinisteriosIdEditRouteImport.update({
   id: '/edit',
   path: '/edit',
@@ -272,9 +317,20 @@ const MembrosIdEditRoute = MembrosIdEditRouteImport.update({
   path: '/edit',
   getParentRoute: () => MembrosIdRoute,
 } as any)
+const AdminUsuariosNovoRoute = AdminUsuariosNovoRouteImport.update({
+  id: '/admin/usuarios/novo',
+  path: '/admin/usuarios/novo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIgrejasNovaRoute = AdminIgrejasNovaRouteImport.update({
+  id: '/admin/igrejas/nova',
+  path: '/admin/igrejas/nova',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/403': typeof R403Route
   '/about': typeof AboutRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
@@ -299,6 +355,7 @@ export interface FileRoutesByFullPath {
   '/relatorios/financeiro': typeof RelatoriosFinanceiroRoute
   '/relatorios/membros': typeof RelatoriosMembrosRoute
   '/relatorios/pastoral': typeof RelatoriosPastoralRoute
+  '/admin/': typeof AdminIndexRoute
   '/arquivos/': typeof ArquivosIndexRoute
   '/celulas/': typeof CelulasIndexRoute
   '/configuracoes/': typeof ConfiguracoesIndexRoute
@@ -312,14 +369,22 @@ export interface FileRoutesByFullPath {
   '/patrimonio/': typeof PatrimonioIndexRoute
   '/perfil/': typeof PerfilIndexRoute
   '/relatorios/': typeof RelatoriosIndexRoute
+  '/admin/igrejas/nova': typeof AdminIgrejasNovaRoute
+  '/admin/usuarios/novo': typeof AdminUsuariosNovoRoute
   '/membros/$id/edit': typeof MembrosIdEditRoute
   '/ministerios/$id/edit': typeof MinisteriosIdEditRoute
+  '/ministerios/admin/disponibilidade': typeof MinisteriosAdminDisponibilidadeRoute
   '/patrimonio/emprestimos/novo': typeof PatrimonioEmprestimosNovoRoute
   '/patrimonio/id/editar': typeof PatrimonioChar91idChar93EditarRoute
+  '/admin/igrejas/': typeof AdminIgrejasIndexRoute
+  '/admin/permissoes/': typeof AdminPermissoesIndexRoute
+  '/admin/sistema/': typeof AdminSistemaIndexRoute
+  '/admin/usuarios/': typeof AdminUsuariosIndexRoute
   '/patrimonio/id/': typeof PatrimonioChar91idChar93IndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/403': typeof R403Route
   '/about': typeof AboutRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
@@ -344,6 +409,7 @@ export interface FileRoutesByTo {
   '/relatorios/financeiro': typeof RelatoriosFinanceiroRoute
   '/relatorios/membros': typeof RelatoriosMembrosRoute
   '/relatorios/pastoral': typeof RelatoriosPastoralRoute
+  '/admin': typeof AdminIndexRoute
   '/arquivos': typeof ArquivosIndexRoute
   '/celulas': typeof CelulasIndexRoute
   '/configuracoes': typeof ConfiguracoesIndexRoute
@@ -357,15 +423,23 @@ export interface FileRoutesByTo {
   '/patrimonio': typeof PatrimonioIndexRoute
   '/perfil': typeof PerfilIndexRoute
   '/relatorios': typeof RelatoriosIndexRoute
+  '/admin/igrejas/nova': typeof AdminIgrejasNovaRoute
+  '/admin/usuarios/novo': typeof AdminUsuariosNovoRoute
   '/membros/$id/edit': typeof MembrosIdEditRoute
   '/ministerios/$id/edit': typeof MinisteriosIdEditRoute
+  '/ministerios/admin/disponibilidade': typeof MinisteriosAdminDisponibilidadeRoute
   '/patrimonio/emprestimos/novo': typeof PatrimonioEmprestimosNovoRoute
   '/patrimonio/id/editar': typeof PatrimonioChar91idChar93EditarRoute
+  '/admin/igrejas': typeof AdminIgrejasIndexRoute
+  '/admin/permissoes': typeof AdminPermissoesIndexRoute
+  '/admin/sistema': typeof AdminSistemaIndexRoute
+  '/admin/usuarios': typeof AdminUsuariosIndexRoute
   '/patrimonio/id': typeof PatrimonioChar91idChar93IndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/403': typeof R403Route
   '/about': typeof AboutRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
@@ -390,6 +464,7 @@ export interface FileRoutesById {
   '/relatorios/financeiro': typeof RelatoriosFinanceiroRoute
   '/relatorios/membros': typeof RelatoriosMembrosRoute
   '/relatorios/pastoral': typeof RelatoriosPastoralRoute
+  '/admin/': typeof AdminIndexRoute
   '/arquivos/': typeof ArquivosIndexRoute
   '/celulas/': typeof CelulasIndexRoute
   '/configuracoes/': typeof ConfiguracoesIndexRoute
@@ -403,16 +478,24 @@ export interface FileRoutesById {
   '/patrimonio/': typeof PatrimonioIndexRoute
   '/perfil/': typeof PerfilIndexRoute
   '/relatorios/': typeof RelatoriosIndexRoute
+  '/admin/igrejas/nova': typeof AdminIgrejasNovaRoute
+  '/admin/usuarios/novo': typeof AdminUsuariosNovoRoute
   '/membros/$id/edit': typeof MembrosIdEditRoute
   '/ministerios/$id/edit': typeof MinisteriosIdEditRoute
+  '/ministerios/admin/disponibilidade': typeof MinisteriosAdminDisponibilidadeRoute
   '/patrimonio/emprestimos/novo': typeof PatrimonioEmprestimosNovoRoute
   '/patrimonio/id/editar': typeof PatrimonioChar91idChar93EditarRoute
+  '/admin/igrejas/': typeof AdminIgrejasIndexRoute
+  '/admin/permissoes/': typeof AdminPermissoesIndexRoute
+  '/admin/sistema/': typeof AdminSistemaIndexRoute
+  '/admin/usuarios/': typeof AdminUsuariosIndexRoute
   '/patrimonio/id/': typeof PatrimonioChar91idChar93IndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/403'
     | '/about'
     | '/login'
     | '/register'
@@ -437,6 +520,7 @@ export interface FileRouteTypes {
     | '/relatorios/financeiro'
     | '/relatorios/membros'
     | '/relatorios/pastoral'
+    | '/admin/'
     | '/arquivos/'
     | '/celulas/'
     | '/configuracoes/'
@@ -450,14 +534,22 @@ export interface FileRouteTypes {
     | '/patrimonio/'
     | '/perfil/'
     | '/relatorios/'
+    | '/admin/igrejas/nova'
+    | '/admin/usuarios/novo'
     | '/membros/$id/edit'
     | '/ministerios/$id/edit'
+    | '/ministerios/admin/disponibilidade'
     | '/patrimonio/emprestimos/novo'
     | '/patrimonio/id/editar'
+    | '/admin/igrejas/'
+    | '/admin/permissoes/'
+    | '/admin/sistema/'
+    | '/admin/usuarios/'
     | '/patrimonio/id/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/403'
     | '/about'
     | '/login'
     | '/register'
@@ -482,6 +574,7 @@ export interface FileRouteTypes {
     | '/relatorios/financeiro'
     | '/relatorios/membros'
     | '/relatorios/pastoral'
+    | '/admin'
     | '/arquivos'
     | '/celulas'
     | '/configuracoes'
@@ -495,14 +588,22 @@ export interface FileRouteTypes {
     | '/patrimonio'
     | '/perfil'
     | '/relatorios'
+    | '/admin/igrejas/nova'
+    | '/admin/usuarios/novo'
     | '/membros/$id/edit'
     | '/ministerios/$id/edit'
+    | '/ministerios/admin/disponibilidade'
     | '/patrimonio/emprestimos/novo'
     | '/patrimonio/id/editar'
+    | '/admin/igrejas'
+    | '/admin/permissoes'
+    | '/admin/sistema'
+    | '/admin/usuarios'
     | '/patrimonio/id'
   id:
     | '__root__'
     | '/'
+    | '/403'
     | '/about'
     | '/login'
     | '/register'
@@ -527,6 +628,7 @@ export interface FileRouteTypes {
     | '/relatorios/financeiro'
     | '/relatorios/membros'
     | '/relatorios/pastoral'
+    | '/admin/'
     | '/arquivos/'
     | '/celulas/'
     | '/configuracoes/'
@@ -540,15 +642,23 @@ export interface FileRouteTypes {
     | '/patrimonio/'
     | '/perfil/'
     | '/relatorios/'
+    | '/admin/igrejas/nova'
+    | '/admin/usuarios/novo'
     | '/membros/$id/edit'
     | '/ministerios/$id/edit'
+    | '/ministerios/admin/disponibilidade'
     | '/patrimonio/emprestimos/novo'
     | '/patrimonio/id/editar'
+    | '/admin/igrejas/'
+    | '/admin/permissoes/'
+    | '/admin/sistema/'
+    | '/admin/usuarios/'
     | '/patrimonio/id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R403Route: typeof R403Route
   AboutRoute: typeof AboutRoute
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
@@ -573,6 +683,7 @@ export interface RootRouteChildren {
   RelatoriosFinanceiroRoute: typeof RelatoriosFinanceiroRoute
   RelatoriosMembrosRoute: typeof RelatoriosMembrosRoute
   RelatoriosPastoralRoute: typeof RelatoriosPastoralRoute
+  AdminIndexRoute: typeof AdminIndexRoute
   ArquivosIndexRoute: typeof ArquivosIndexRoute
   CelulasIndexRoute: typeof CelulasIndexRoute
   ConfiguracoesIndexRoute: typeof ConfiguracoesIndexRoute
@@ -586,8 +697,15 @@ export interface RootRouteChildren {
   PatrimonioIndexRoute: typeof PatrimonioIndexRoute
   PerfilIndexRoute: typeof PerfilIndexRoute
   RelatoriosIndexRoute: typeof RelatoriosIndexRoute
+  AdminIgrejasNovaRoute: typeof AdminIgrejasNovaRoute
+  AdminUsuariosNovoRoute: typeof AdminUsuariosNovoRoute
+  MinisteriosAdminDisponibilidadeRoute: typeof MinisteriosAdminDisponibilidadeRoute
   PatrimonioEmprestimosNovoRoute: typeof PatrimonioEmprestimosNovoRoute
   PatrimonioChar91idChar93EditarRoute: typeof PatrimonioChar91idChar93EditarRoute
+  AdminIgrejasIndexRoute: typeof AdminIgrejasIndexRoute
+  AdminPermissoesIndexRoute: typeof AdminPermissoesIndexRoute
+  AdminSistemaIndexRoute: typeof AdminSistemaIndexRoute
+  AdminUsuariosIndexRoute: typeof AdminUsuariosIndexRoute
   PatrimonioChar91idChar93IndexRoute: typeof PatrimonioChar91idChar93IndexRoute
 }
 
@@ -612,6 +730,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/403': {
+      id: '/403'
+      path: '/403'
+      fullPath: '/403'
+      preLoaderRoute: typeof R403RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -710,6 +835,13 @@ declare module '@tanstack/react-router' {
       path: '/arquivos'
       fullPath: '/arquivos/'
       preLoaderRoute: typeof ArquivosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/relatorios/pastoral': {
@@ -866,6 +998,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PatrimonioChar91idChar93IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/usuarios/': {
+      id: '/admin/usuarios/'
+      path: '/admin/usuarios'
+      fullPath: '/admin/usuarios/'
+      preLoaderRoute: typeof AdminUsuariosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/sistema/': {
+      id: '/admin/sistema/'
+      path: '/admin/sistema'
+      fullPath: '/admin/sistema/'
+      preLoaderRoute: typeof AdminSistemaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/permissoes/': {
+      id: '/admin/permissoes/'
+      path: '/admin/permissoes'
+      fullPath: '/admin/permissoes/'
+      preLoaderRoute: typeof AdminPermissoesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/igrejas/': {
+      id: '/admin/igrejas/'
+      path: '/admin/igrejas'
+      fullPath: '/admin/igrejas/'
+      preLoaderRoute: typeof AdminIgrejasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/patrimonio/id/editar': {
       id: '/patrimonio/id/editar'
       path: '/patrimonio/id/editar'
@@ -878,6 +1038,13 @@ declare module '@tanstack/react-router' {
       path: '/patrimonio/emprestimos/novo'
       fullPath: '/patrimonio/emprestimos/novo'
       preLoaderRoute: typeof PatrimonioEmprestimosNovoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ministerios/admin/disponibilidade': {
+      id: '/ministerios/admin/disponibilidade'
+      path: '/ministerios/admin/disponibilidade'
+      fullPath: '/ministerios/admin/disponibilidade'
+      preLoaderRoute: typeof MinisteriosAdminDisponibilidadeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ministerios/$id/edit': {
@@ -893,6 +1060,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/membros/$id/edit'
       preLoaderRoute: typeof MembrosIdEditRouteImport
       parentRoute: typeof MembrosIdRoute
+    }
+    '/admin/usuarios/novo': {
+      id: '/admin/usuarios/novo'
+      path: '/admin/usuarios/novo'
+      fullPath: '/admin/usuarios/novo'
+      preLoaderRoute: typeof AdminUsuariosNovoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/igrejas/nova': {
+      id: '/admin/igrejas/nova'
+      path: '/admin/igrejas/nova'
+      fullPath: '/admin/igrejas/nova'
+      preLoaderRoute: typeof AdminIgrejasNovaRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -923,6 +1104,7 @@ const MinisteriosIdRouteWithChildren = MinisteriosIdRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R403Route: R403Route,
   AboutRoute: AboutRoute,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
@@ -947,6 +1129,7 @@ const rootRouteChildren: RootRouteChildren = {
   RelatoriosFinanceiroRoute: RelatoriosFinanceiroRoute,
   RelatoriosMembrosRoute: RelatoriosMembrosRoute,
   RelatoriosPastoralRoute: RelatoriosPastoralRoute,
+  AdminIndexRoute: AdminIndexRoute,
   ArquivosIndexRoute: ArquivosIndexRoute,
   CelulasIndexRoute: CelulasIndexRoute,
   ConfiguracoesIndexRoute: ConfiguracoesIndexRoute,
@@ -960,8 +1143,15 @@ const rootRouteChildren: RootRouteChildren = {
   PatrimonioIndexRoute: PatrimonioIndexRoute,
   PerfilIndexRoute: PerfilIndexRoute,
   RelatoriosIndexRoute: RelatoriosIndexRoute,
+  AdminIgrejasNovaRoute: AdminIgrejasNovaRoute,
+  AdminUsuariosNovoRoute: AdminUsuariosNovoRoute,
+  MinisteriosAdminDisponibilidadeRoute: MinisteriosAdminDisponibilidadeRoute,
   PatrimonioEmprestimosNovoRoute: PatrimonioEmprestimosNovoRoute,
   PatrimonioChar91idChar93EditarRoute: PatrimonioChar91idChar93EditarRoute,
+  AdminIgrejasIndexRoute: AdminIgrejasIndexRoute,
+  AdminPermissoesIndexRoute: AdminPermissoesIndexRoute,
+  AdminSistemaIndexRoute: AdminSistemaIndexRoute,
+  AdminUsuariosIndexRoute: AdminUsuariosIndexRoute,
   PatrimonioChar91idChar93IndexRoute: PatrimonioChar91idChar93IndexRoute,
 }
 export const routeTree = rootRouteImport

@@ -63,7 +63,7 @@ export function EscalasTab({ ministerioId }: EscalasTabProps) {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center p-12">
-        <Loader2 className="w-8 h-8 animate-spin text-[var(--lagoon)]" />
+        <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
       </div>
     )
   }
@@ -71,10 +71,10 @@ export function EscalasTab({ ministerioId }: EscalasTabProps) {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-bold text-[var(--sea-ink)]">Escalas de Serviço</h2>
+        <h2 className="text-xl font-bold text-gray-900">Escalas de Serviço</h2>
         <div className="flex gap-2">
            <button
-            className="flex items-center gap-2 px-4 py-2 bg-[var(--lagoon)] text-white rounded-lg hover:bg-[var(--lagoon-deep)] transition-colors text-sm font-medium"
+            className="flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors text-sm font-medium"
           >
             <Plus className="w-4 h-4" />
             Nova Escala
@@ -84,18 +84,18 @@ export function EscalasTab({ ministerioId }: EscalasTabProps) {
 
       <div className="grid gap-6">
         {escalas?.map((escala) => (
-          <div key={escala.id} className="bg-white border border-[var(--line)] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-            <div className="p-4 border-b border-[var(--line)] bg-gray-50/50 flex justify-between items-start">
+          <div key={escala.id} className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div className="p-4 border-b border-gray-200 bg-gray-50/50 flex justify-between items-start">
               <div className="flex items-center gap-4">
-                <div className="bg-[var(--lagoon)] text-white p-2 rounded-lg text-center min-w-[60px]">
+                <div className="bg-teal-600 text-white p-2 rounded-lg text-center min-w-[60px]">
                   <span className="block text-xs uppercase font-bold">{format(new Date(escala.data), 'MMM', { locale: ptBR })}</span>
                   <span className="block text-xl font-black">{format(new Date(escala.data), 'dd')}</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-[var(--sea-ink)]">
+                  <h3 className="font-bold text-gray-900">
                     {format(new Date(escala.data), "EEEE, dd 'de' MMMM", { locale: ptBR })}
                   </h3>
-                  <div className="flex items-center gap-4 mt-1 text-sm text-[var(--sea-ink-soft)]">
+                  <div className="flex items-center gap-4 mt-1 text-sm text-gray-600">
                     <div className="flex items-center gap-1">
                       <Clock className="w-3 h-3" />
                       {/* {format(new Date(escala.hora_inicio), 'HH:mm')} - {format(new Date(escala.hora_fim), 'HH:mm')} */}
@@ -116,7 +116,7 @@ export function EscalasTab({ ministerioId }: EscalasTabProps) {
                   onClick={() => autoFillMutation.mutate(escala.id)}
                   disabled={autoFillMutation.isPending}
                   title="Preencher Automaticamente"
-                  className="p-2 text-[var(--lagoon)] hover:bg-[var(--lagoon)]/10 rounded-lg transition-colors border border-[var(--lagoon)]/20"
+                  className="p-2 text-teal-600 hover:bg-teal-600/10 rounded-lg transition-colors border border-teal-600/20"
                 >
                   <Sparkles className={`w-4 h-4 ${autoFillMutation.isPending ? 'animate-pulse' : ''}`} />
                 </button>
@@ -137,7 +137,7 @@ export function EscalasTab({ ministerioId }: EscalasTabProps) {
             <div className="p-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {escala.membros?.map((m) => (
-                  <div key={m.id} className="flex items-center justify-between p-3 border border-[var(--line)] rounded-lg bg-white">
+                  <div key={m.id} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg bg-white">
                     <div className="flex items-center gap-3">
                       <div className="relative">
                         <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden border border-gray-200">
@@ -152,8 +152,8 @@ export function EscalasTab({ ministerioId }: EscalasTabProps) {
                         </div>
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-[var(--sea-ink)] line-clamp-1">{m.membro.nome_completo}</p>
-                        <p className="text-[10px] text-[var(--sea-ink-soft)] uppercase tracking-wider font-bold">{m.funcao || 'Voluntário'}</p>
+                        <p className="text-sm font-semibold text-gray-900 line-clamp-1">{m.membro.nome_completo}</p>
+                        <p className="text-[10px] text-gray-600 uppercase tracking-wider font-bold">{m.funcao || 'Voluntário'}</p>
                       </div>
                     </div>
                   </div>
@@ -161,10 +161,10 @@ export function EscalasTab({ ministerioId }: EscalasTabProps) {
                 
                 {(!escala.membros || escala.membros.length === 0) && (
                   <div className="col-span-full py-6 text-center border-2 border-dashed border-gray-100 rounded-xl">
-                    <p className="text-sm text-[var(--sea-ink-soft)]">Nenhum voluntário escalado.</p>
+                    <p className="text-sm text-gray-600">Nenhum voluntário escalado.</p>
                     <button 
                       onClick={() => autoFillMutation.mutate(escala.id)}
-                      className="mt-2 text-xs font-bold text-[var(--lagoon)] hover:underline flex items-center gap-1 mx-auto"
+                      className="mt-2 text-xs font-bold text-teal-600 hover:underline flex items-center gap-1 mx-auto"
                     >
                       <Sparkles className="w-3 h-3" />
                       Tentar Preenchimento Automático
@@ -177,13 +177,13 @@ export function EscalasTab({ ministerioId }: EscalasTabProps) {
         ))}
 
         {escalas?.length === 0 && (
-          <div className="text-center py-16 bg-white border-2 border-dashed border-[var(--line)] rounded-2xl">
-            <Calendar className="w-12 h-12 mx-auto mb-4 opacity-20 text-[var(--sea-ink)]" />
-            <h3 className="text-lg font-bold text-[var(--sea-ink)]">Nenhuma escala programada</h3>
-            <p className="text-[var(--sea-ink-soft)] max-w-xs mx-auto mt-2">
+          <div className="text-center py-16 bg-white border-2 border-dashed border-gray-200 rounded-2xl">
+            <Calendar className="w-12 h-12 mx-auto mb-4 opacity-20 text-gray-900" />
+            <h3 className="text-lg font-bold text-gray-900">Nenhuma escala programada</h3>
+            <p className="text-gray-600 max-w-xs mx-auto mt-2">
               Comece criando uma nova data de escala para este ministério.
             </p>
-            <button className="mt-6 px-6 py-2 bg-[var(--lagoon)] text-white rounded-lg font-bold hover:shadow-lg transition-all">
+            <button className="mt-6 px-6 py-2 bg-teal-600 text-white rounded-lg font-bold hover:shadow-lg transition-all">
               Criar Primeira Escala
             </button>
           </div>

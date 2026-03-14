@@ -183,27 +183,27 @@ export const BemFormPage: FC = () => {
   if (loadingBem && isEditing) {
     return (
       <div className="flex items-center justify-center p-12">
-        <Loader2 className="w-8 h-8 animate-spin text-[var(--lagoon)]" />
+        <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background text-primary">
-      <div className="container mx-auto p-4 max-w-4xl">
+    <div className="">
+      <div className=" max-w-4xl">
         <div className="py-8">
           <div className="flex items-center gap-4 mb-6">
            <button
              onClick={() => navigate({ to: '/patrimonio' })}
-             className="p-2 hover:bg-[var(--line)] rounded-lg transition-colors"
+             className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
            >
              <X className="w-5 h-5" />
            </button>
             <div>
-              <h1 className="text-3xl font-bold text-[var(--sea-ink)]">
+              <h1 className="text-3xl font-bold text-gray-900">
                 {isEditing ? 'Editar Bem' : 'Novo Bem'}
               </h1>
-              <p className="text-sm text-[var(--sea-ink-soft)] mt-1">
+              <p className="text-sm text-gray-600 mt-1">
                 {isEditing ? 'Atualize as informações do bem' : 'Cadastre um novo bem patrimonial'}
               </p>
             </div>
@@ -211,28 +211,28 @@ export const BemFormPage: FC = () => {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Informações Básicas */}
-            <div className="bg-white rounded-xl p-6 border border-[var(--line)]">
-              <h2 className="text-lg font-semibold text-[var(--sea-ink)] mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <Package className="w-5 h-5" />
                 Informações Básicas
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Nome *</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Nome *</label>
                   <input
                     type="text"
                     value={formData.nome}
                     onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Tipo *</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Tipo *</label>
                   <select
                     value={formData.tipo}
                     onChange={(e) => setFormData({ ...formData, tipo: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   >
                     {tipoOptions.map((opt) => (
                       <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -240,20 +240,20 @@ export const BemFormPage: FC = () => {
                   </select>
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Descrição</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Descrição</label>
                   <textarea
                     value={formData.descricao}
                     onChange={(e) => setFormData({ ...formData, descricao: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                     rows={3}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Status</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Status</label>
                   <select
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   >
                     {statusOptions.map((opt) => (
                       <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -264,29 +264,29 @@ export const BemFormPage: FC = () => {
             </div>
 
             {/* Identificação */}
-            <div className="bg-white rounded-xl p-6 border border-[var(--line)]">
-              <h2 className="text-lg font-semibold text-[var(--sea-ink)] mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <QrCode className="w-5 h-5" />
                 Identificação
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Número Patrimônio</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Número Patrimônio</label>
                   <input
                     type="text"
                     value={formData.numero_patrimonio}
                     onChange={(e) => setFormData({ ...formData, numero_patrimonio: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                     placeholder="Auto-gerado se vazio"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Código de Barras</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Código de Barras</label>
                   <input
                     type="text"
                     value={formData.codigo_barras}
                     onChange={(e) => setFormData({ ...formData, codigo_barras: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                     placeholder="Auto-gerado se vazio"
                   />
                 </div>
@@ -294,45 +294,45 @@ export const BemFormPage: FC = () => {
             </div>
 
             {/* Especificações */}
-            <div className="bg-white rounded-xl p-6 border border-[var(--line)]">
-              <h2 className="text-lg font-semibold text-[var(--sea-ink)] mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5" />
                 Especificações Técnicas
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Marca</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Marca</label>
                   <input
                     type="text"
                     value={formData.marca}
                     onChange={(e) => setFormData({ ...formData, marca: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Modelo</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Modelo</label>
                   <input
                     type="text"
                     value={formData.modelo}
                     onChange={(e) => setFormData({ ...formData, modelo: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Número Série</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Número Série</label>
                   <input
                     type="text"
                     value={formData.numero_serie}
                     onChange={(e) => setFormData({ ...formData, numero_serie: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Estado de Conservação</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Estado de Conservação</label>
                   <select
                     value={formData.estado_conservacao}
                     onChange={(e) => setFormData({ ...formData, estado_conservacao: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   >
                     <option value="">Selecione</option>
                     {conservacaoOptions.map((opt) => (
@@ -341,21 +341,21 @@ export const BemFormPage: FC = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Cor</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Cor</label>
                   <input
                     type="text"
                     value={formData.cor}
                     onChange={(e) => setFormData({ ...formData, cor: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Características (JSON)</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Características (JSON)</label>
                   <input
                     type="text"
                     value={formData.caracteristicas}
                     onChange={(e) => setFormData({ ...formData, caracteristicas: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                     placeholder='{"tela": "15"}'
                   />
                 </div>
@@ -363,28 +363,28 @@ export const BemFormPage: FC = () => {
             </div>
 
             {/* Localização e Responsável */}
-            <div className="bg-white rounded-xl p-6 border border-[var(--line)]">
-              <h2 className="text-lg font-semibold text-[var(--sea-ink)] mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <MapPin className="w-5 h-5" />
                 Localização e Responsável
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Localização</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Localização</label>
                   <input
                     type="text"
                     value={formData.localizacao}
                     onChange={(e) => setFormData({ ...formData, localizacao: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                     placeholder="Ex: Sala de Células"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Responsável</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Responsável</label>
                   <select
                     value={formData.responsavel_id}
                     onChange={(e) => setFormData({ ...formData, responsavel_id: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   >
                     <option value="">Selecione um membro</option>
                     {membros?.map((membro: any) => (
@@ -398,12 +398,12 @@ export const BemFormPage: FC = () => {
             </div>
 
             {/* Fotos */}
-            <div className="bg-white rounded-xl p-6 border border-[var(--line)]">
-              <h2 className="text-lg font-semibold text-[var(--sea-ink)] mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <Camera className="w-5 h-5" />
                 Fotos
               </h2>
-              <div className="border-2 border-dashed border-[var(--line)] rounded-lg p-6 text-center">
+              <div className="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center">
                 <input
                   type="file"
                   multiple
@@ -413,8 +413,8 @@ export const BemFormPage: FC = () => {
                   id="fotos-upload"
                 />
                 <label htmlFor="fotos-upload" className="cursor-pointer">
-                  <Upload className="w-8 h-8 mx-auto mb-2 text-[var(--lagoon)]" />
-                  <p className="text-sm text-[var(--sea-ink-soft)]">
+                  <Upload className="w-8 h-8 mx-auto mb-2 text-teal-600" />
+                  <p className="text-sm text-gray-600">
                     Clique para selecionar imagens
                   </p>
                   <p className="text-xs text-gray-400 mt-1">
@@ -424,7 +424,7 @@ export const BemFormPage: FC = () => {
                 {fotos.length > 0 && (
                   <div className="mt-4 flex flex-wrap gap-2 justify-center">
                     {fotos.map((file, idx) => (
-                      <div key={idx} className="text-xs bg-[var(--lagoon)]/10 text-[var(--lagoon)] px-2 py-1 rounded">
+                      <div key={idx} className="text-xs bg-teal-600/20 text-teal-600 px-2 py-1 rounded">
                         {file.name}
                       </div>
                     ))}
@@ -438,14 +438,14 @@ export const BemFormPage: FC = () => {
               <button
                 type="button"
                 onClick={() => navigate({ to: '/patrimonio' })}
-                className="px-6 py-2 border border-[var(--line)] rounded-lg text-[var(--sea-ink)] hover:bg-[var(--line)] transition-colors"
+                className="px-6 py-2 border border-gray-200 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={createMutation.isPending || updateMutation.isPending}
-                className="px-6 py-2 bg-[var(--lagoon)] text-white rounded-lg hover:bg-[var(--lagoon-deep)] transition-colors disabled:opacity-50 flex items-center gap-2"
+                className="px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors disabled:opacity-50 flex items-center gap-2"
               >
                 {(createMutation.isPending || updateMutation.isPending) ? (
                   <Loader2 className="w-4 h-4 animate-spin" />

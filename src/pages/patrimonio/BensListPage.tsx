@@ -79,14 +79,14 @@ export const BensListPage: FC<BensListPageProps> = () => {
     <div>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-[var(--sea-ink)]">Patrimônio</h1>
-          <p className="text-sm text-[var(--sea-ink-soft)] mt-1">
+          <h1 className="text-3xl font-bold text-gray-900">Patrimônio</h1>
+          <p className="text-sm text-gray-600 mt-1">
             {bens?.length || 0} bens cadastrados
           </p>
         </div>
         <button
           onClick={() => window.location.href = '/patrimonio/novo'}
-          className="flex items-center gap-2 px-4 py-2 bg-[var(--lagoon)] text-white rounded-lg hover:bg-[var(--lagoon-deep)] transition-colors"
+          className="flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
         >
           <Plus className="w-4 h-4" />
           Novo Bem
@@ -94,7 +94,7 @@ export const BensListPage: FC<BensListPageProps> = () => {
       </div>
 
       {/* Filtros */}
-      <div className="bg-white p-4 rounded-lg border border-[var(--line)] mb-6">
+      <div className="bg-white p-4 rounded-lg border border-gray-200 mb-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -103,13 +103,13 @@ export const BensListPage: FC<BensListPageProps> = () => {
               placeholder="Buscar por nome, número ou código..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
             />
           </div>
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-4 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+            className="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
           >
             <option value="">Todos os status</option>
             {Object.keys(statusColors).map((status) => (
@@ -121,7 +121,7 @@ export const BensListPage: FC<BensListPageProps> = () => {
           <select
             value={tipoFilter}
             onChange={(e) => setTipoFilter(e.target.value)}
-            className="px-4 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+            className="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
           >
             <option value="">Todos os tipos</option>
             <option value="EQUIPAMENTO">Equipamento</option>
@@ -139,17 +139,17 @@ export const BensListPage: FC<BensListPageProps> = () => {
         {bens?.map((bem) => (
           <div
             key={bem.id}
-            className="bg-white border border-[var(--line)] rounded-xl p-4 hover:shadow-md transition-shadow cursor-pointer"
+            className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow cursor-pointer"
             onClick={() => window.location.href = `/patrimonio/${bem.id}`}
           >
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center gap-2">
-                <div className="p-2 bg-[var(--lagoon)]/10 rounded-lg">
-                  <Package className="w-5 h-5 text-[var(--lagoon)]" />
+                <div className="p-2 bg-teal-600/10 rounded-lg">
+                  <Package className="w-5 h-5 text-teal-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-[var(--sea-ink)] line-clamp-1">{bem.nome}</h3>
-                  <p className="text-xs text-[var(--sea-ink-soft)]">{bem.numero_patrimonio || 'Sem número'}</p>
+                  <h3 className="font-semibold text-gray-900 line-clamp-1">{bem.nome}</h3>
+                  <p className="text-xs text-gray-600">{bem.numero_patrimonio || 'Sem número'}</p>
                 </div>
               </div>
               <div className="flex gap-1">
@@ -171,35 +171,35 @@ export const BensListPage: FC<BensListPageProps> = () => {
 
             <div className="space-y-2 text-sm">
               <div className="flex items-center justify-between">
-                <span className="flex items-center gap-1 text-[var(--sea-ink-soft)]">
+                <span className="flex items-center gap-1 text-gray-600">
                   <TrendingUp className="w-3 h-3" />
                   Tipo
                 </span>
-                <span className="font-medium text-[var(--sea-ink)]">{bem.tipo}</span>
+                <span className="font-medium text-gray-900">{bem.tipo}</span>
               </div>
               
               {bem.localizacao && (
                 <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1 text-[var(--sea-ink-soft)]">
+                  <span className="flex items-center gap-1 text-gray-600">
                     <MapPin className="w-3 h-3" />
                     Local
                   </span>
-                  <span className="font-medium text-[var(--sea-ink)]">{bem.localizacao}</span>
+                  <span className="font-medium text-gray-900">{bem.localizacao}</span>
                 </div>
               )}
 
               {bem.responsavel && (
                 <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1 text-[var(--sea-ink-soft)]">
+                  <span className="flex items-center gap-1 text-gray-600">
                     <User className="w-3 h-3" />
                     Responsável
                   </span>
-                  <span className="font-medium text-[var(--sea-ink)]">{bem.responsavel.nome_completo}</span>
+                  <span className="font-medium text-gray-900">{bem.responsavel.nome_completo}</span>
                 </div>
               )}
 
-              <div className="flex items-center justify-between pt-2 border-t border-[var(--line)]">
-                <span className="text-[var(--sea-ink-soft)]">Status</span>
+              <div className="flex items-center justify-between pt-2 border-t border-gray-200">
+                <span className="text-gray-600">Status</span>
                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[bem.status] || 'bg-gray-100 text-gray-700'}`}>
                   {getStatusLabel(bem.status)}
                 </span>
@@ -226,11 +226,11 @@ export const BensListPage: FC<BensListPageProps> = () => {
                     key={foto.id}
                     src={`/api/arquivos/${foto.arquivo.id}/download`}
                     alt=""
-                    className="w-12 h-12 object-cover rounded border border-[var(--line)] flex-shrink-0"
+                    className="w-12 h-12 object-cover rounded border border-gray-200 flex-shrink-0"
                   />
                 ))}
                 {bem.fotos?.length > 3 && (
-                  <div className="w-12 h-12 bg-gray-100 rounded border border-[var(--line)] flex items-center justify-center text-xs text-gray-500 flex-shrink-0">
+                  <div className="w-12 h-12 bg-gray-100 rounded border border-gray-200 flex items-center justify-center text-xs text-gray-500 flex-shrink-0">
                     +{bem.fotos.length - 3}
                   </div>
                 )}
@@ -240,12 +240,12 @@ export const BensListPage: FC<BensListPageProps> = () => {
         ))}
 
         {bens?.length === 0 && (
-          <div className="col-span-full text-center py-12 text-[var(--sea-ink-soft)]">
+          <div className="col-span-full text-center py-12 text-gray-600">
             <Package className="w-12 h-12 mx-auto mb-4 opacity-50" />
             <p>Nenhum bem encontrado.</p>
             <button
               onClick={() => window.location.href = '/patrimonio/novo'}
-              className="mt-4 px-4 py-2 bg-[var(--lagoon)] text-white rounded-lg hover:bg-[var(--lagoon-deep)] transition-colors"
+              className="mt-4 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
             >
               Cadastrar primeiro bem
             </button>

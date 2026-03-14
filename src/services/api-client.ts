@@ -2,7 +2,7 @@ import axios, { type AxiosInstance, type InternalAxiosRequestConfig, type AxiosR
 import { tokenManager } from '@/utils/token-manager'
 
 // API base URL from environment or default
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3030'
 
 // Create axios instance
 const apiClient: AxiosInstance = axios.create({
@@ -39,8 +39,12 @@ function processQueue(error: any, token: string | null = null): void {
 apiClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const accessToken = tokenManager.getAccessToken()
+    console.log('🔑 Token no interceptor:', accessToken ? 'Presente' : 'AUSENTE')
     if (accessToken && config.headers) {
       config.headers.Authorization = `Bearer ${accessToken}`
+      console.log('✅ Authorization header adicionado:', config.headers.Authorization.substring(0, 30) + '...')
+    } else {
+      console.log('❌ Token não encontrado ou headers inválidos')
     }
     return config
   },

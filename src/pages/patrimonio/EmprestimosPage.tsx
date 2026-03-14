@@ -80,25 +80,25 @@ export const EmprestimosPage: FC = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center p-12">
-        <Loader2 className="w-8 h-8 animate-spin text-[var(--lagoon)]" />
+        <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background text-primary">
-      <div className="container mx-auto p-4">
+    <div className="">
+      <div className="">
         <div className="py-8">
           <div className="flex justify-between items-center mb-6">
             <div>
-              <h1 className="text-3xl font-bold text-[var(--sea-ink)]">Empréstimos</h1>
-              <p className="text-sm text-[var(--sea-ink-soft)] mt-1">
+              <h1 className="text-3xl font-bold text-gray-900">Empréstimos</h1>
+              <p className="text-sm text-gray-600 mt-1">
                 {emprestimos?.length || 0} empréstimos ativos
               </p>
             </div>
             <button
               onClick={() => window.location.href = '/patrimonio/emprestimos/novo'}
-              className="flex items-center gap-2 px-4 py-2 bg-[var(--lagoon)] text-white rounded-lg hover:bg-[var(--lagoon-deep)] transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
             >
               <Plus className="w-4 h-4" />
               Novo Empréstimo
@@ -111,8 +111,8 @@ export const EmprestimosPage: FC = () => {
               onClick={() => setShowOnlyActive(true)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 showOnlyActive 
-                  ? 'bg-[var(--lagoon)] text-white' 
-                  : 'bg-[var(--line)] text-[var(--sea-ink)] hover:bg-[var(--lagoon)]/10'
+                  ? 'bg-teal-600 text-white' 
+                  : 'bg-gray-100 text-gray-900 hover:bg-teal-600/20'
               }`}
             >
               Apenas Ativos
@@ -121,8 +121,8 @@ export const EmprestimosPage: FC = () => {
               onClick={() => setShowOnlyActive(false)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 !showOnlyActive 
-                  ? 'bg-[var(--lagoon)] text-white' 
-                  : 'bg-[var(--line)] text-[var(--sea-ink)] hover:bg-[var(--lagoon)]/10'
+                  ? 'bg-teal-600 text-white' 
+                  : 'bg-gray-100 text-gray-900 hover:bg-teal-600/20'
               }`}
             >
               Todos
@@ -134,40 +134,40 @@ export const EmprestimosPage: FC = () => {
             {emprestimos?.map((emprestimo) => (
               <div
                 key={emprestimo.id}
-                className="bg-white border border-[var(--line)] rounded-xl p-6 hover:shadow-md transition-shadow"
+                className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-[var(--lagoon)]/10 rounded-lg">
-                      <Package className="w-6 h-6 text-[var(--lagoon)]" />
+                    <div className="p-3 bg-teal-600/20 rounded-lg">
+                      <Package className="w-6 h-6 text-teal-600" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-[var(--sea-ink)] text-lg">
+                      <h3 className="font-semibold text-gray-900 text-lg">
                         {emprestimo.bem?.nome}
                       </h3>
-                      <p className="text-sm text-[var(--sea-ink-soft)]">
+                      <p className="text-sm text-gray-600">
                         {emprestimo.bem?.tipo} • {emprestimo.bem?.numero_patrimonio}
                       </p>
                       
                       <div className="mt-3 grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
                         <div className="flex items-center gap-2">
-                          <User className="w-4 h-4 text-[var(--sea-ink-soft)]" />
-                          <span className="text-[var(--sea-ink-soft)]">Mutuário:</span>
-                          <span className="font-medium text-[var(--sea-ink)]">
+                          <User className="w-4 h-4 text-gray-600" />
+                          <span className="text-gray-600">Mutuário:</span>
+                          <span className="font-medium text-gray-900">
                             {emprestimo.membro?.nome_completo}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4 text-[var(--sea-ink-soft)]" />
-                          <span className="text-[var(--sea-ink-soft)]">Empréstimo:</span>
-                          <span className="font-medium text-[var(--sea-ink)]">
+                          <Calendar className="w-4 h-4 text-gray-600" />
+                          <span className="text-gray-600">Empréstimo:</span>
+                          <span className="font-medium text-gray-900">
                             {format(new Date(emprestimo.data_emprestimo), 'dd/MM/yyyy', { locale: ptBR })}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Clock className="w-4 h-4 text-[var(--sea-ink-soft)]" />
-                          <span className="text-[var(--sea-ink-soft)]">Devolução:</span>
-                          <span className={`font-medium ${isOverdue(emprestimo.data_devolucao_prevista) ? 'text-red-600' : 'text-[var(--sea-ink)]'}`}>
+                          <Clock className="w-4 h-4 text-gray-600" />
+                          <span className="text-gray-600">Devolução:</span>
+                          <span className={`font-medium ${isOverdue(emprestimo.data_devolucao_prevista) ? 'text-red-600' : 'text-gray-900'}`}>
                             {emprestimo.data_devolucao_prevista 
                               ? format(new Date(emprestimo.data_devolucao_prevista), 'dd/MM/yyyy', { locale: ptBR })
                               : 'Sem prazo'}
@@ -176,13 +176,13 @@ export const EmprestimosPage: FC = () => {
                       </div>
 
                       {emprestimo.motivo && (
-                        <p className="mt-2 text-sm text-[var(--sea-ink-soft)]">
+                        <p className="mt-2 text-sm text-gray-600">
                           <strong>Motivo:</strong> {emprestimo.motivo}
                         </p>
                       )}
 
                       {emprestimo.observacoes && (
-                        <p className="mt-1 text-sm text-[var(--sea-ink-soft)]">
+                        <p className="mt-1 text-sm text-gray-600">
                           <strong>Observações:</strong> {emprestimo.observacoes}
                         </p>
                       )}
@@ -223,7 +223,7 @@ export const EmprestimosPage: FC = () => {
             ))}
 
             {emprestimos?.length === 0 && (
-              <div className="text-center py-12 text-[var(--sea-ink-soft)]">
+              <div className="text-center py-12 text-gray-600">
                 <Package className="w-12 h-12 mx-auto mb-4 opacity-50" />
                 <p>Nenhum empréstimo encontrado.</p>
               </div>

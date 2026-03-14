@@ -1,44 +1,52 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { escolaBiblicaService } from '../../features/escola-biblica/escola-biblica-service';
-import type { CreateMatriculaDto } from '../../features/escola-biblica/types';
-import { 
-  Plus, 
-  Trash2, 
-  Loader2,
-  Users,
-  CheckCircle,
-  Search
-} from 'lucide-react';
+import { createFileRoute } from "@tanstack/react-router";
+import { DashboardLayout } from "@/layouts/DashboardLayout";
+import { PrivateRoute } from "@/components/PrivateRoute";
+import { useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { escolaBiblicaService } from "../../features/escola-biblica/escola-biblica-service";
+import type { CreateMatriculaDto } from "../../features/escola-biblica/types";
+import { Plus, Trash2, Loader2, Users, CheckCircle } from "lucide-react";
+import { ptBR } from "date-fns/locale";
+import { format } from "date-fns";
+
+function MatriculasPage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <MatriculasList />
+      </DashboardLayout>
+    </PrivateRoute>
+  );
+}
 
 function MatriculasList() {
   const queryClient = useQueryClient();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [filterTurma, setFilterTurma] = useState('');
-  const [searchMembro, setSearchMembro] = useState('');
+  const [filterTurma, setFilterTurma] = useState("");
+  const [searchMembro, setSearchMembro] = useState("");
   const [formData, setFormData] = useState<CreateMatriculaDto>({
-    turma_id: '',
-    membro_id: '',
+    turma_id: "",
+    membro_id: "",
   });
 
   const { data: turmas } = useQuery({
-    queryKey: ['turmas'],
+    queryKey: ["turmas"],
     queryFn: () => escolaBiblicaService.getTurmas(),
   });
 
   const { data: matriculas, isLoading } = useQuery({
-    queryKey: ['matriculas', filterTurma],
-    queryFn: () => escolaBiblicaService.getMatriculas({ 
-      turmaId: filterTurma || undefined 
-    }),
+    queryKey: ["matriculas", filterTurma],
+    queryFn: () =>
+      escolaBiblicaService.getMatriculas({
+        turmaId: filterTurma || undefined,
+      }),
   });
 
   const { data: membros } = useQuery({
-    queryKey: ['membros', searchMembro],
+    queryKey: ["membros", searchMembro],
     queryFn: () => {
       if (searchMembro.length < 2) return [];
-      return fetch(`/api/membros?search=${searchMembro}`).then(r => r.json());
+      return fetch(`/api/membros?search=${searchMembro}`).then((r) => r.json());
     },
     enabled: searchMembro.length >= 2,
   });
@@ -46,27 +54,28 @@ function MatriculasList() {
   const createMutation = useMutation({
     mutationFn: escolaBiblicaService.createMatricula,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['matriculas'] });
+      queryClient.invalidateQueries({ queryKey: ["matriculas"] });
       setIsModalOpen(false);
-      setFormData({ turma_id: '', membro_id: '' });
-      setSearchMembro('');
+      setFormData({ turma_id: "", membro_id: "" });
+      setSearchMembro("");
     },
   });
 
   const deleteMutation = useMutation({
     mutationFn: escolaBiblicaService.deleteMatricula,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['matriculas'] }),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ["matriculas"] }),
   });
 
   const concluirMutation = useMutation({
-    mutationFn: ({ id, data }: { id: string; data: { dataConclusao: string } }) =>
-      escolaBiblicaService.concluirMatricula(id, data),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['matriculas'] }),
+    mutationFn: (id: string) => escolaBiblicaService.concluirMatricula(id),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ["matriculas"] }),
   });
 
   const resetForm = () => {
-    setFormData({ turma_id: '', membro_id: '' });
-    setSearchMembro('');
+    setFormData({ turma_id: "", membro_id: "" });
+    setSearchMembro("");
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -76,7 +85,7 @@ function MatriculasList() {
 
   const handleSelectMembro = (membroId: string) => {
     setFormData({ ...formData, membro_id: membroId });
-    setSearchMembro('');
+    setSearchMembro("");
   };
 
   if (isLoading) {
@@ -92,7 +101,10 @@ function MatriculasList() {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-lg font-semibold text-gray-900">Matrículas</h2>
         <button
-          onClick={() => { resetForm(); setIsModalOpen(true); }}
+          onClick={() => {
+            resetForm();
+            setIsModalOpen(true);
+          }}
           className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
         >
           <Plus className="w-4 h-4" />
@@ -128,38 +140,47 @@ function MatriculasList() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900">
-                    {matricula.membro?.nome || 'Membro não encontrado'}
+                    {matricula.membro?.nome || "Membro não encontrado"}
                   </h3>
                   <p className="text-sm text-gray-500">
-                    Turma: {matricula.turma?.codigo || 'Turma não encontrada'}
+                    Turma: {matricula.turma?.codigo || "Turma não encontrada"}
                   </p>
                   <div className="flex items-center gap-4 mt-2">
-                    <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
-                      matricula.status === 'ATIVA' ? 'bg-green-100 text-green-700' :
-                      matricula.status === 'CANCELADA' ? 'bg-red-100 text-red-700' :
-                      'bg-yellow-100 text-yellow-700'
-                    }`}>
-                      {matricula.status === 'ATIVA' ? 'Ativa' :
-                       matricula.status === 'CANCELADA' ? 'Cancelada' : 'Em Curso'}
+                    <span
+                      className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
+                        matricula.status === "ATIVA"
+                          ? "bg-green-100 text-green-700"
+                          : matricula.status === "CANCELADA"
+                            ? "bg-red-100 text-red-700"
+                            : "bg-yellow-100 text-yellow-700"
+                      }`}
+                    >
+                      {matricula.status === "ATIVA"
+                        ? "Ativa"
+                        : matricula.status === "CANCELADA"
+                          ? "Cancelada"
+                          : "Em Curso"}
                     </span>
                     {matricula.dataConclusao && (
                       <span className="inline-flex items-center gap-1 text-sm text-green-600">
                         <CheckCircle className="w-4 h-4" />
-                        Concluído em {format(new Date(matricula.dataConclusao), 'dd/MM/yyyy', { locale: ptBR })}
+                        Concluído em{" "}
+                        {format(
+                          new Date(matricula.dataConclusao),
+                          "dd/MM/yyyy",
+                          { locale: ptBR },
+                        )}
                       </span>
                     )}
                   </div>
                 </div>
               </div>
               <div className="flex gap-1">
-                {matricula.status === 'ATIVA' && !matricula.dataConclusao && (
+                {matricula.status === "ATIVA" && !matricula.dataConclusao && (
                   <button
                     onClick={() => {
-                      if (confirm('Marcar como concluído?')) {
-                        concluirMutation.mutate({ 
-                          id: matricula.id, 
-                          data: { dataConclusao: new Date().toISOString().split('T')[0] } 
-                        });
+                      if (confirm("Marcar como concluído?")) {
+                        concluirMutation.mutate(matricula.id);
                       }
                     }}
                     className="p-2 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
@@ -170,7 +191,9 @@ function MatriculasList() {
                 )}
                 <button
                   onClick={() => {
-                    if (confirm('Tem certeza que deseja cancelar esta matrícula?')) {
+                    if (
+                      confirm("Tem certeza que deseja cancelar esta matrícula?")
+                    ) {
                       deleteMutation.mutate(matricula.id);
                     }
                   }}
@@ -197,10 +220,14 @@ function MatriculasList() {
             <h3 className="text-lg font-semibold mb-4">Nova Matrícula</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Turma</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Turma
+                </label>
                 <select
                   value={formData.turma_id}
-                  onChange={(e) => setFormData({ ...formData, turma_id: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, turma_id: e.target.value })
+                  }
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
                   required
                 >
@@ -213,7 +240,9 @@ function MatriculasList() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Membro</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Membro
+                </label>
                 <div className="relative">
                   <input
                     type="text"
@@ -232,32 +261,45 @@ function MatriculasList() {
                           className="w-full px-3 py-2 text-left hover:bg-gray-50"
                         >
                           <div className="font-medium">{membro.nome}</div>
-                          <div className="text-sm text-gray-500">{membro.email}</div>
+                          <div className="text-sm text-gray-500">
+                            {membro.email}
+                          </div>
                         </button>
                       ))}
                     </div>
                   )}
                 </div>
                 {formData.membro_id && (
-                  <p className="text-sm text-green-600 mt-1">Membro selecionado</p>
+                  <p className="text-sm text-green-600 mt-1">
+                    Membro selecionado
+                  </p>
                 )}
               </div>
               <div className="flex gap-3 pt-4">
                 <button
                   type="button"
-                  onClick={() => { setIsModalOpen(false); resetForm(); }}
+                  onClick={() => {
+                    setIsModalOpen(false);
+                    resetForm();
+                  }}
                   className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  disabled={createMutation.isPending || !formData.turma_id || !formData.membro_id}
+                  disabled={
+                    createMutation.isPending ||
+                    !formData.turma_id ||
+                    !formData.membro_id
+                  }
                   className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50"
                 >
                   {createMutation.isPending ? (
                     <Loader2 className="w-4 h-4 animate-spin mx-auto" />
-                  ) : 'Matricular'}
+                  ) : (
+                    "Matricular"
+                  )}
                 </button>
               </div>
             </form>
@@ -268,6 +310,6 @@ function MatriculasList() {
   );
 }
 
-export const Route = createFileRoute('/escola-biblica/matriculas')({
-  component: MatriculasList,
+export const Route = createFileRoute("/escola-biblica/matriculas")({
+  component: MatriculasPage,
 });

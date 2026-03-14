@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { financeiroService } from '../../features/financeiro/financeiro-service';
@@ -12,6 +14,16 @@ import {
   TrendingUp,
   TrendingDown
 } from 'lucide-react';
+
+function CategoriasPage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <CategoriasList />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
+}
 
 function CategoriasList() {
   const queryClient = useQueryClient();
@@ -241,5 +253,5 @@ function CategoriasList() {
 }
 
 export const Route = createFileRoute('/financeiro/categorias')({
-  component: CategoriasList,
+  component: CategoriasPage,
 });

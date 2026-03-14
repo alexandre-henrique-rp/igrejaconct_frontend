@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { arquivosService } from '../../features/arquivos/arquivos-service';
@@ -9,14 +11,23 @@ import {
   File,
   Trash2,
   Loader2,
-  FolderOpen,
-  Download,
   Eye
 } from 'lucide-react';
+import { TitleComponent } from '#/components/TitleComponent';
 
 export const Route = createFileRoute('/arquivos/')({
-  component: ArquivosPage,
+  component: ArquivosRoutePage,
 });
+
+function ArquivosRoutePage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <ArquivosPage />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
+}
 
 function ArquivosPage() {
   const queryClient = useQueryClient();
@@ -74,13 +85,7 @@ function ArquivosPage() {
   return (
     <div className="p-6">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-          <FolderOpen className="w-7 h-7 text-blue-600" />
-          Arquivos
-        </h1>
-        <p className="text-gray-500 mt-1">
-          Gerencie uploads e downloads de arquivos da igreja.
-        </p>
+        <TitleComponent title="Arquivos" description="Gerencie os arquivos da igreja" />
       </div>
 
       {/* Upload Area */}

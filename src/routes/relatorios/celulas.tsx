@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { useQuery } from '@tanstack/react-query';
 import api from '../../services/api-client';
 import { 
@@ -14,8 +16,18 @@ import {
 } from 'lucide-react';
 
 export const Route = createFileRoute('/relatorios/celulas')({
-  component: CelulasDashboard,
+  component: CelulasPage,
 });
+
+function CelulasPage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <CelulasDashboard />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
+}
 
 function CelulasDashboard() {
   const { data: dashboard, isLoading, error } = useQuery({
@@ -28,8 +40,8 @@ function CelulasDashboard() {
 
   if (isLoading) return (
     <div className="flex flex-col items-center justify-center min-h-[400px] p-8">
-      <Loader2 className="w-12 h-12 text-[var(--lagoon)] animate-spin mb-4" />
-      <p className="text-[var(--sea-ink-soft)] font-medium">Carregando métricas de células...</p>
+      <Loader2 className="w-12 h-12 text-teal-600 animate-spin mb-4" />
+      <p className="text-gray-600 font-medium">Carregando métricas de células...</p>
     </div>
   );
 
@@ -38,56 +50,56 @@ function CelulasDashboard() {
   return (
     <div className="p-6">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-[var(--sea-ink)] flex items-center gap-2">
-          <Home className="w-7 h-7 text-[var(--lagoon)]" />
+        <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+          <Home className="w-7 h-7 text-teal-600" />
           Dashboard de Células
         </h1>
-        <p className="text-[var(--sea-ink-soft)]">Análise de crescimento, frequência e saúde dos pequenos grupos.</p>
+        <p className="text-gray-600">Análise de crescimento, frequência e saúde dos pequenos grupos.</p>
       </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="p-6 bg-white border border-[var(--line)] rounded-2xl shadow-sm">
+        <div className="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <div className="p-2 bg-[var(--lagoon-soft)] text-[var(--lagoon-deep)] rounded-xl"><Home className="w-6 h-6" /></div>
-            <span className="text-[10px] font-bold text-[var(--sea-ink-soft)] uppercase tracking-wider">Total</span>
+            <div className="p-2 bg-teal-50 text-teal-700 rounded-xl"><Home className="w-6 h-6" /></div>
+            <span className="text-[10px] font-bold text-gray-600 uppercase tracking-wider">Total</span>
           </div>
-          <h3 className="text-2xl font-bold text-[var(--sea-ink)]">{dashboard.summary.totalCelulas}</h3>
-          <p className="text-xs text-[var(--sea-ink-soft)] mt-1 font-medium">Células Ativas</p>
+          <h3 className="text-2xl font-bold text-gray-900">{dashboard.summary.totalCelulas}</h3>
+          <p className="text-xs text-gray-600 mt-1 font-medium">Células Ativas</p>
         </div>
 
-        <div className="p-6 bg-white border border-[var(--line)] rounded-2xl shadow-sm">
+        <div className="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <div className="p-2 bg-[var(--lagoon-soft)] text-[var(--lagoon-deep)] rounded-xl"><Users className="w-6 h-6" /></div>
-            <span className="text-[10px] font-bold text-[var(--sea-ink-soft)] uppercase tracking-wider">Alcance</span>
+            <div className="p-2 bg-teal-50 text-teal-700 rounded-xl"><Users className="w-6 h-6" /></div>
+            <span className="text-[10px] font-bold text-gray-600 uppercase tracking-wider">Alcance</span>
           </div>
-          <h3 className="text-2xl font-bold text-[var(--sea-ink)]">{dashboard.summary.totalMembrosEmCelulas}</h3>
-          <p className="text-xs text-[var(--sea-ink-soft)] mt-1 font-medium">Membros em Células</p>
+          <h3 className="text-2xl font-bold text-gray-900">{dashboard.summary.totalMembrosEmCelulas}</h3>
+          <p className="text-xs text-gray-600 mt-1 font-medium">Membros em Células</p>
         </div>
 
-        <div className="p-6 bg-white border border-[var(--line)] rounded-2xl shadow-sm">
+        <div className="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <div className="p-2 bg-[var(--sand-soft)] text-[var(--sea-ink)] rounded-xl"><Calendar className="w-6 h-6" /></div>
-            <span className="text-[10px] font-bold text-[var(--sea-ink-soft)] uppercase tracking-wider">Frequência</span>
+            <div className="p-2 bg-gray-50 text-gray-900 rounded-xl"><Calendar className="w-6 h-6" /></div>
+            <span className="text-[10px] font-bold text-gray-600 uppercase tracking-wider">Frequência</span>
           </div>
-          <h3 className="text-2xl font-bold text-[var(--sea-ink)]">{dashboard.meetingStats.mediaPresenca}</h3>
-          <p className="text-xs text-[var(--sea-ink-soft)] mt-1 font-medium">Média de Presença</p>
+          <h3 className="text-2xl font-bold text-gray-900">{dashboard.meetingStats.mediaPresenca}</h3>
+          <p className="text-xs text-gray-600 mt-1 font-medium">Média de Presença</p>
         </div>
 
-        <div className="p-6 bg-white border border-[var(--line)] rounded-2xl shadow-sm">
+        <div className="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <div className="p-2 bg-[var(--lagoon-soft)] text-[var(--lagoon-deep)] rounded-xl"><Zap className="w-6 h-6" /></div>
-            <span className="text-[10px] font-bold text-[var(--sea-ink-soft)] uppercase tracking-wider">Impacto</span>
+            <div className="p-2 bg-teal-50 text-teal-700 rounded-xl"><Zap className="w-6 h-6" /></div>
+            <span className="text-[10px] font-bold text-gray-600 uppercase tracking-wider">Impacto</span>
           </div>
-          <h3 className="text-2xl font-bold text-[var(--sea-ink)]">+{dashboard.meetingStats.totalConversoes}</h3>
-          <p className="text-xs text-[var(--sea-ink-soft)] mt-1 font-medium">Conversões no Mês</p>
+          <h3 className="text-2xl font-bold text-gray-900">+{dashboard.meetingStats.totalConversoes}</h3>
+          <p className="text-xs text-gray-600 mt-1 font-medium">Conversões no Mês</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Histórico de Frequência */}
-        <div className="p-6 bg-white border border-[var(--line)] rounded-2xl shadow-sm">
-          <h3 className="text-lg font-bold text-[var(--sea-ink)] mb-6">Média de Frequência Mensal</h3>
+        <div className="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
+          <h3 className="text-lg font-bold text-gray-900 mb-6">Média de Frequência Mensal</h3>
           <div className="h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={dashboard.meetingHistory}>
@@ -118,8 +130,8 @@ function CelulasDashboard() {
         </div>
 
         {/* Histórico de Visitantes */}
-        <div className="p-6 bg-white border border-[var(--line)] rounded-2xl shadow-sm">
-          <h3 className="text-lg font-bold text-[var(--sea-ink)] mb-6">Total de Visitantes (6 meses)</h3>
+        <div className="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
+          <h3 className="text-lg font-bold text-gray-900 mb-6">Total de Visitantes (6 meses)</h3>
           <div className="h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={dashboard.meetingHistory}>
@@ -136,27 +148,27 @@ function CelulasDashboard() {
         </div>
 
         {/* Resumo do Período */}
-        <div className="lg:col-span-2 p-6 bg-white border border-[var(--line)] rounded-2xl shadow-sm">
-          <h3 className="text-lg font-bold text-[var(--sea-ink)] mb-6">Resumo Detalhado (Mês Atual)</h3>
+        <div className="lg:col-span-2 p-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
+          <h3 className="text-lg font-bold text-gray-900 mb-6">Resumo Detalhado (Mês Atual)</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="space-y-2">
-              <p className="text-xs font-bold text-[var(--sea-ink-soft)] uppercase">Reuniões Realizadas</p>
-              <p className="text-3xl font-bold text-[var(--sea-ink)]">{dashboard.meetingStats.totalReunioes}</p>
-              <div className="w-full bg-[var(--sand-soft)] h-2 rounded-full overflow-hidden">
-                <div className="bg-[var(--lagoon)] h-full" style={{ width: '100%' }}></div>
+              <p className="text-xs font-bold text-gray-600 uppercase">Reuniões Realizadas</p>
+              <p className="text-3xl font-bold text-gray-900">{dashboard.meetingStats.totalReunioes}</p>
+              <div className="w-full bg-gray-50 h-2 rounded-full overflow-hidden">
+                <div className="bg-teal-600 h-full" style={{ width: '100%' }}></div>
               </div>
             </div>
             <div className="space-y-2">
-              <p className="text-xs font-bold text-[var(--sea-ink-soft)] uppercase">Total de Presentes</p>
-              <p className="text-3xl font-bold text-[var(--sea-ink)]">{dashboard.meetingStats.totalPresentes}</p>
-              <div className="w-full bg-[var(--sand-soft)] h-2 rounded-full overflow-hidden">
-                <div className="bg-[var(--lagoon)] h-full" style={{ width: '75%' }}></div>
+              <p className="text-xs font-bold text-gray-600 uppercase">Total de Presentes</p>
+              <p className="text-3xl font-bold text-gray-900">{dashboard.meetingStats.totalPresentes}</p>
+              <div className="w-full bg-gray-50 h-2 rounded-full overflow-hidden">
+                <div className="bg-teal-600 h-full" style={{ width: '75%' }}></div>
               </div>
             </div>
             <div className="space-y-2">
-              <p className="text-xs font-bold text-[var(--sea-ink-soft)] uppercase">Saúde da Célula (Média Membros)</p>
-              <p className="text-3xl font-bold text-[var(--sea-ink)]">{dashboard.summary.mediaMembrosPorCelula}</p>
-              <p className="text-xs text-[var(--sea-ink-soft)] font-medium">Ideal: 8 a 12 membros</p>
+              <p className="text-xs font-bold text-gray-600 uppercase">Saúde da Célula (Média Membros)</p>
+              <p className="text-3xl font-bold text-gray-900">{dashboard.summary.mediaMembrosPorCelula}</p>
+              <p className="text-xs text-gray-600 font-medium">Ideal: 8 a 12 membros</p>
             </div>
           </div>
         </div>

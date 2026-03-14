@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { useQuery } from '@tanstack/react-query';
 import api from '../../services/api-client';
 import { 
@@ -18,10 +20,20 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
 export const Route = createFileRoute('/relatorios/pastoral')({
-  component: PastoralDashboard,
+  component: PastoralPage,
 });
 
 const COLORS = ['#ef4444', '#f59e0b', '#3b82f6', '#10b981', '#8b5cf6', '#6366f1', '#f472b6'];
+
+function PastoralPage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <PastoralDashboard />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
+}
 
 function PastoralDashboard() {
   const { data: dashboard, isLoading, error } = useQuery({

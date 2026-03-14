@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { useQuery } from '@tanstack/react-query';
 import api from '../../services/api-client';
 import { 
@@ -16,8 +18,18 @@ import {
 } from 'lucide-react';
 
 export const Route = createFileRoute('/relatorios/financeiro')({
-  component: FinanceiroDashboard,
+  component: FinanceiroPage,
 });
+
+function FinanceiroPage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <FinanceiroDashboard />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
+}
 
 function FinanceiroDashboard() {
   const { data: dashboard, isLoading, error } = useQuery({

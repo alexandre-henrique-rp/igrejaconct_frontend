@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { MemberList } from '@/features/membros/components/MemberList'
 
 export const Route = createFileRoute('/membros/')({
@@ -6,5 +8,11 @@ export const Route = createFileRoute('/membros/')({
 })
 
 function MembrosPage() {
-  return <MemberList />
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <MemberList />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
 }

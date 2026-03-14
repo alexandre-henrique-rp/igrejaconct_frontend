@@ -97,7 +97,7 @@ export const financeiroService = {
     await api.delete(`/financeiro/lancamentos/${id}`);
   },
 
-  async approveLancamento(id: string) {
+  async approveLancamento(id: string, p0: string) {
     const response = await api.post<Lancamento>(`/financeiro/lancamentos/${id}/aprovar`);
     return response.data;
   },

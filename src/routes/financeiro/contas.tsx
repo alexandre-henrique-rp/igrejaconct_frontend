@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { financeiroService } from '../../features/financeiro/financeiro-service';
@@ -13,6 +15,16 @@ import {
   PiggyBank,
   CreditCard,
 } from 'lucide-react';
+
+function ContasPage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <ContasList />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
+}
 
 function ContasList() {
   const queryClient = useQueryClient();
@@ -225,5 +237,5 @@ function ContasList() {
 }
 
 export const Route = createFileRoute('/financeiro/contas')({
-  component: ContasList,
+  component: ContasPage,
 });

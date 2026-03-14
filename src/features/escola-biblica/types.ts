@@ -71,6 +71,7 @@ export interface UpdateTurmaDto {
 }
 
 export interface Matricula {
+  membro: any;
   id: string;
   turma_id: string;
   turma?: Turma;
@@ -107,6 +108,10 @@ export interface CreateFrequenciaDto {
 }
 
 export interface Certificado {
+  membro: any;
+  matricula: any;
+  emailEnviadoEm: any;
+  ativo: boolean;
   id: string;
   matricula_id: string;
   numero: string;

@@ -1,9 +1,21 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { GraduationCap, Users, Award, BookOpen } from 'lucide-react';
 
 export const Route = createFileRoute('/escola-biblica/')({
-  component: EscolaBiblicaIndex,
+  component: EscolaBiblicaPage,
 });
+
+function EscolaBiblicaPage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <EscolaBiblicaIndex />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
+}
 
 function EscolaBiblicaIndex() {
   const modules = [

@@ -77,7 +77,7 @@ export function MinisterioForm() {
   if (loadingMinisterio && isEditing) {
     return (
       <div className="flex items-center justify-center p-12">
-        <Loader2 className="w-8 h-8 animate-spin text-[var(--lagoon)]" />
+        <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
       </div>
     )
   }
@@ -86,20 +86,20 @@ export function MinisterioForm() {
     <div className="max-w-2xl mx-auto">
       <button
         onClick={() => navigate({ to: '/ministerios' })}
-        className="mb-4 flex items-center gap-2 text-sm text-[var(--sea-ink-soft)] hover:text-[var(--sea-ink)] transition-colors"
+        className="mb-4 flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         Voltar
       </button>
 
-      <h1 className="text-2xl font-bold text-[var(--sea-ink)] mb-6">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">
         {isEditing ? 'Editar Ministério' : 'Novo Ministério'}
       </h1>
 
-      <div className="bg-white border border-[var(--line)] rounded-xl p-6">
+      <div className="bg-white border border-gray-200 rounded-xl p-6">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium mb-1 text-[var(--sea-ink)]">
+            <label className="block text-sm font-medium mb-1 text-gray-900">
               Nome *
             </label>
             <input
@@ -107,32 +107,32 @@ export function MinisterioForm() {
               value={formData.nome}
               onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
               required
-              className="w-full px-4 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
               placeholder="Ex: Ministério de Louvor"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1 text-[var(--sea-ink)]">
+            <label className="block text-sm font-medium mb-1 text-gray-900">
               Descrição
             </label>
             <textarea
               value={formData.descricao}
               onChange={(e) => setFormData({ ...formData, descricao: e.target.value })}
               rows={3}
-              className="w-full px-4 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
               placeholder="Descreva o propósito deste ministério..."
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1 text-[var(--sea-ink)]">
+            <label className="block text-sm font-medium mb-1 text-gray-900">
               Responsável
             </label>
             <select
               value={formData.responsavel_id || ''}
               onChange={(e) => setFormData({ ...formData, responsavel_id: e.target.value })}
-              className="w-full px-4 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
             >
               <option value="">Selecione um membro</option>
               {membros?.map((membro) => (
@@ -147,7 +147,7 @@ export function MinisterioForm() {
             <button
               type="submit"
               disabled={createMutation.isPending || updateMutation.isPending}
-              className="flex items-center gap-2 px-6 py-2 bg-[var(--lagoon)] text-white rounded-lg hover:bg-[var(--lagoon-deep)] disabled:opacity-50 transition-colors"
+              className="flex items-center gap-2 px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:opacity-50 transition-colors"
             >
               {(createMutation.isPending || updateMutation.isPending) ? (
                 <>
@@ -164,7 +164,7 @@ export function MinisterioForm() {
             <button
               type="button"
               onClick={() => navigate({ to: '/ministerios' })}
-              className="px-6 py-2 border border-[var(--line)] rounded-lg hover:bg-[var(--lagoon)]/5 transition-colors"
+              className="px-6 py-2 border border-gray-200 rounded-lg hover:bg-teal-600/5 transition-colors"
             >
               Cancelar
             </button>

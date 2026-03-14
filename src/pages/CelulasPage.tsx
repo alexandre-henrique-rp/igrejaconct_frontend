@@ -2,32 +2,47 @@ import { FC } from 'react';
 
 const CelulasPage: FC = () => {
   return (
-    <div className="min-h-screen bg-background text-primary">
-      <div className="container mx-auto p-4">
-        <div className="py-8">
-          <h1 className="text-3xl font-bold text-[var(--sea-ink)] mb-6">Células</h1>
-          <div className="space-y-6">
-            <div className="rounded-lg bg-white p-4 shadow-sm border border-[var(--line)] flex justify-between">
-              <div>
-                <p className="text-sm text-[var(--sea-ink-soft)]">Células Ativas</p>
-                <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-[var(--sea-ink-soft)] text-xs">
-                  12
-                </span>
-              </div>
-              <div>
-                <p className="text-sm text-[var(--sea-ink-soft)]">Células Filhas</p>
-                <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-[var(--sea-ink-soft)] text-xs">
-                  8
-                </span>
-              </div>
-            </div>
+    <div>
+      {/* Cabeçalho */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+        <div>
+          <h1 className="display-title text-gray-900">Células</h1>
+          <p className="text-sm text-gray-600 mt-1">Gerencie as células da igreja</p>
+        </div>
+      </div>
 
-            <div className="rounded-lg bg-white p-4 shadow-sm border border-[var(--line)] mt-4">
-              <h2 className="text-2xl font-semibold text-[var(--sea-ink)]">Minhas Células</h2>
-              <div className="mt-2 space-y-2">
-                <div className="rounded-md bg-[var(--lagoon)] p-2 text-[var(--sea-ink-soft)] text-sm">Liderança - ATIVA</div>
-                <div className="rounded-md bg-white p-2 border border-[var(--line)] rounded-md">Família - AGUARDANDO</div>
-              </div>
+      {/* Cards de métricas */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-6">
+        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+          <p className="text-xs text-gray-500 uppercase font-medium">Células Ativas</p>
+          <span className="text-2xl font-bold text-gray-900 mt-1 block">12</span>
+        </div>
+        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+          <p className="text-xs text-gray-500 uppercase font-medium">Células Filhas</p>
+          <span className="text-2xl font-bold text-gray-900 mt-1 block">8</span>
+        </div>
+      </div>
+
+      {/* Lista de células */}
+      <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+        <h2 className="text-lg font-bold text-gray-900 mb-4">Minhas Células</h2>
+        <div className="space-y-3">
+          <div className="flex items-center gap-3 p-3 bg-teal-50 rounded-xl border border-teal-200">
+            <div className="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center">
+              <span className="text-teal-700 font-semibold">L</span>
+            </div>
+            <div className="flex-1">
+              <p className="font-semibold text-gray-900">Liderança</p>
+              <span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800 ring-1 ring-green-400">ATIVA</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-200">
+            <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+              <span className="text-gray-700 font-semibold">F</span>
+            </div>
+            <div className="flex-1">
+              <p className="font-semibold text-gray-900">Família</p>
+              <span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800 ring-1 ring-yellow-400">AGUARDANDO</span>
             </div>
           </div>
         </div>

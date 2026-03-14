@@ -6,12 +6,12 @@ export default function Header() {
   const { user, isAuthenticated, logout } = useAuth()
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--header-bg)] px-4 backdrop-blur-lg">
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white px-4 backdrop-blur-lg">
       <nav className="page-wrap flex flex-wrap items-center gap-x-3 gap-y-2 py-3 sm:py-4">
-        <h2 className="m-0 flex-shrink-0 text-base font-semibold tracking-tight">
+        <h2 className="m-0 shrink-0 text-base font-semibold tracking-tight">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--chip-line)] bg-[var(--chip-bg)] px-3 py-1.5 text-sm text-[var(--sea-ink)] no-underline shadow-[0_8px_24px_rgba(30,90,72,0.08)] sm:px-4 sm:py-2"
+            className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-900 no-underline shadow-[0_8px_24px_rgba(30,90,72,0.08)] sm:px-4 sm:py-2"
           >
             <span className="h-2 w-2 rounded-full bg-[linear-gradient(90deg,#56c6be,#7ed3bf)]" />
             IgrejaConnect
@@ -87,12 +87,12 @@ export default function Header() {
         <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
           {isAuthenticated ? (
             <div className="flex items-center gap-3">
-              <span className="hidden text-sm text-[var(--sea-ink-soft)] sm:block">
+              <span className="hidden text-sm text-gray-600 sm:block">
                 Olá, {user?.email.split('@')[0]}
               </span>
               <button
                 onClick={() => logout()}
-                className="rounded-full border border-[rgba(23,58,64,0.2)] bg-white/50 px-4 py-1.5 text-xs font-semibold text-[var(--sea-ink)] hover:bg-white transition-colors"
+                className="rounded-full border border-[rgba(23,58,64,0.2)] bg-white/50 px-4 py-1.5 text-xs font-semibold text-gray-900 hover:bg-white transition-colors"
               >
                 Sair
               </button>
@@ -100,7 +100,7 @@ export default function Header() {
           ) : (
             <Link
               to="/login"
-              className="rounded-full bg-[var(--lagoon)] px-4 py-1.5 text-xs font-semibold text-white hover:bg-[var(--lagoon-deep)] transition-colors"
+              className="rounded-full bg-teal-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-teal-700 transition-colors"
             >
               Entrar
             </Link>

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import { devtools } from '@tanstack/devtools-vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import path from 'path'
 
 import { tanstackRouter } from '@tanstack/router-plugin/vite'
 
@@ -15,6 +16,12 @@ const config = defineConfig({
     tanstackRouter({ target: 'react', autoCodeSplitting: true }),
     viteReact(),
   ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '#': path.resolve(__dirname, './src'),
+    },
+  },
 })
 
 export default config

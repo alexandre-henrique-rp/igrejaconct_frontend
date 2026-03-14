@@ -1,0 +1,12 @@
+
+> dev
+> vite dev --port 3000 2
+
+20:08:55 [vite] (client) Re-optimizing dependencies because lockfile has changed
+Port 3000 is in use, trying another one...
+Port 3001 is in use, trying another one...
+
+  VITE v7.3.1  ready in 180 ms
+
+  ➜  Local:   http://localhost:3002/
+  ➜  Network: use --host to expose

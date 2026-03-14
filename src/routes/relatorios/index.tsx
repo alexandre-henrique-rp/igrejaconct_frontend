@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { 
   Users, 
   DollarSign, 
@@ -6,10 +8,21 @@ import {
   BarChart3,
   Activity 
 } from 'lucide-react';
+import { TitleComponent } from '#/components/TitleComponent';
 
 export const Route = createFileRoute('/relatorios/')({
-  component: RelatoriosIndex,
+  component: RelatoriosPage,
 });
+
+function RelatoriosPage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <RelatoriosIndex />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
+}
 
 function RelatoriosIndex() {
   const categories = [
@@ -50,13 +63,8 @@ function RelatoriosIndex() {
   return (
     <div className="p-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-          <BarChart3 className="w-8 h-8" />
-          Relatórios e Dashboards
-        </h1>
-        <p className="text-gray-600 mt-2">
-          Acompanhe os principais indicadores de saúde e crescimento da sua igreja.
-        </p>
+        <TitleComponent title="Relatórios e Dashboards" description="Acompanhe os principais indicadores de saúde e crescimento da sua igreja." />
+      
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">

@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
-import { Sun, Moon, Users, DollarSign, BarChart3, BookOpen, Home, Settings, ChevronUp, ChevronDown, Cross } from 'lucide-react';
-import { useTheme } from '@/contexts/ThemeContext';
+import { Sun, Moon, Users, DollarSign, BarChart3, BookOpen, Home, Settings, ChevronUp, ChevronDown, Cross, Search } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeProvider';
 
 interface NavItem {
   label: string;
@@ -10,7 +10,8 @@ interface NavItem {
 }
 
 export const Navbar: React.FC = () => {
-  const { isDark, toggleTheme } = useTheme();
+  const { resolvedMode, toggleMode } = useTheme();
+  const isDark = resolvedMode === 'dark';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isActive = window.location.pathname;
 
@@ -27,14 +28,14 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="bg-background shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex w-full justify-between">
             <div className="flex">
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <a href="/dashboard" className="self-center">
-                  <span className="text-[var(--sea-ink)] font-semibold text-xl">IgrejaConnect</span>
+                  <span className="text-gray-900 font-semibold text-xl">IgrejaConnect</span>
                 </a>
               </div>
             </div>
@@ -43,7 +44,7 @@ export const Navbar: React.FC = () => {
           <div className="hidden md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-[var(--sea-ink)] hover:bg-[var(--line)] focus:outline-none focus:ring-2 focus:ring-[var(--lagoon)]"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-600"
               aria-label="Abrir menu"
             >
               {isMenuOpen ? (
@@ -53,7 +54,7 @@ export const Navbar: React.FC = () => {
               )}
             </button>
 
-            <div className={isMenuOpen ? 'md:hidden' : 'absolute right-0 top-full mt-2 w-64 bg-background border border-[var(--line)] rounded-md shadow-lg py-1'}>
+            <div className={isMenuOpen ? 'md:hidden' : 'absolute right-0 top-full mt-2 w-64 bg-background border border-gray-200 rounded-md shadow-lg py-1'}>
               <div className="py-1" role="menu">
                 {items.map((item) => (
                   <Link
@@ -61,10 +62,10 @@ export const Navbar: React.FC = () => {
                     to={item.href}
                     role="menuitem"
                     className={`
-                      block px-4 py-2 rounded-md text-[var(--sea-ink-soft)] hover:bg-[var(--line)] 
-                      :target-blank :hover:bg-[var(--line)] 
-                      ${isActive === item.href ? 'text-[var(--lagoon)] font-medium' : ''}
-                      focus:bg-[var(--line)] focus:outline-none
+                      block px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100 
+                      :target-blank :hover:bg-gray-100 
+                      ${isActive === item.href ? 'text-teal-600 font-medium' : ''}
+                      focus:bg-gray-100 focus:outline-none
                     `}
                   >
                     {item.icon}
@@ -76,8 +77,8 @@ export const Navbar: React.FC = () => {
 
             <div className="flex items-center space-x-4">
               <button
-                onClick={toggleTheme}
-                className="flex items-center space-x-1 px-3 py-1.5 border border-[var(--line)] rounded-md text-[var(--sea-ink)] hover:bg-[var(--line)] focus:outline-none focus:ring-2 focus:ring-[var(--lagoon)]"
+                onClick={toggleMode}
+                className="flex items-center space-x-1 px-3 py-1.5 border border-gray-200 rounded-md text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-600"
                 aria-label="Alternar tema"
               >
                 {isDark ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
@@ -85,18 +86,9 @@ export const Navbar: React.FC = () => {
 
               <div className="flex items-center space-x-2">
                 {/* Search Icon */}
-                <svg
-                  className="h-5 w-5 text-[var(--sea-ink-soft)] hover:text-[var(--lagoon)]"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M8.257 3.754c.755-1.708 1.246-3.585 1.246-5.33a2.25.25 round{...}..."
-                  />
-                </svg>
+                <Search className="h-5 w-5 text-gray-600 hover:text-teal-600" />
                 {/* User Avatar or Name */}
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--lagoon)] flex items-center justify-center">
+                <div className="shrink-0 w-8 h-8 rounded-full bg-teal-600 flex items-center justify-center">
                   <span className="text-white text-sm font-medium">I</span>
                 </div>
               </div>

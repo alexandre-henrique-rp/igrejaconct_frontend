@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { patrimonioService } from '@/features/patrimonio/patrimonio-service'
@@ -15,8 +17,18 @@ import {
 import { useNavigate } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/patrimonio/emprestimos/novo')({
-  component: EmprestimoFormPage,
+  component: EmprestimoPage,
 })
+
+function EmprestimoPage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <EmprestimoFormPage />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
+}
 
 function EmprestimoFormPage() {
   const navigate = useNavigate()
@@ -61,36 +73,36 @@ function EmprestimoFormPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-primary">
-      <div className="container mx-auto p-4 max-w-2xl">
+    <div className="">
+      <div className=" max-w-2xl">
         <div className="py-8">
           <div className="flex items-center gap-4 mb-6">
             <button
               onClick={() => navigate({ to: '/patrimonio' })}
-              className="p-2 hover:bg-[var(--line)] rounded-lg transition-colors"
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
             <div>
-              <h1 className="text-3xl font-bold text-[var(--sea-ink)]">Novo Empréstimo</h1>
-              <p className="text-sm text-[var(--sea-ink-soft)] mt-1">
+              <h1 className="text-3xl font-bold text-gray-900">Novo Empréstimo</h1>
+              <p className="text-sm text-gray-600 mt-1">
                 Registre um novo empréstimo de bem patrimonial
               </p>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="bg-white rounded-xl p-6 border border-[var(--line)]">
-              <h2 className="text-lg font-semibold text-[var(--sea-ink)] mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <Package className="w-5 h-5" />
                 Selecionar Bem
               </h2>
               <div>
-                <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Bem *</label>
+                <label className="block text-sm font-medium text-gray-900 mb-1">Bem *</label>
                 <select
                   value={formData.bem_id}
                   onChange={(e) => setFormData({ ...formData, bem_id: e.target.value })}
-                  className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   required
                 >
                   <option value="">Selecione um bem disponível</option>
@@ -108,17 +120,17 @@ function EmprestimoFormPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 border border-[var(--line)]">
-              <h2 className="text-lg font-semibold text-[var(--sea-ink)] mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <User className="w-5 h-5" />
                 Mutuário
               </h2>
               <div>
-                <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Membro *</label>
+                <label className="block text-sm font-medium text-gray-900 mb-1">Membro *</label>
                 <select
                   value={formData.membro_id}
                   onChange={(e) => setFormData({ ...formData, membro_id: e.target.value })}
-                  className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   required
                 >
                   <option value="">Selecione um membro</option>
@@ -131,18 +143,18 @@ function EmprestimoFormPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 border border-[var(--line)]">
-              <h2 className="text-lg font-semibold text-[var(--sea-ink)] mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
                 Detalhes do Empréstimo
               </h2>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Tipo</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Tipo</label>
                   <select
                     value={formData.tipo}
                     onChange={(e) => setFormData({ ...formData, tipo: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   >
                     <option value="TEMPORARIO">Temporário</option>
                     <option value="INTERNO">Interno</option>
@@ -152,33 +164,33 @@ function EmprestimoFormPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">
+                  <label className="block text-sm font-medium text-gray-900 mb-1">
                     Data de Devolução Prevista
                   </label>
                   <input
                     type="date"
                     value={formData.data_devolucao_prevista}
                     onChange={(e) => setFormData({ ...formData, data_devolucao_prevista: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Motivo</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Motivo</label>
                   <textarea
                     value={formData.motivo}
                     onChange={(e) => setFormData({ ...formData, motivo: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                     rows={2}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[var(--sea-ink)] mb-1">Observações</label>
+                  <label className="block text-sm font-medium text-gray-900 mb-1">Observações</label>
                   <textarea
                     value={formData.observacoes}
                     onChange={(e) => setFormData({ ...formData, observacoes: e.target.value })}
-                    className="w-full px-3 py-2 border border-[var(--line)] rounded-lg focus:ring-2 focus:ring-[var(--lagoon)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                     rows={2}
                   />
                 </div>
@@ -189,14 +201,14 @@ function EmprestimoFormPage() {
               <button
                 type="button"
                 onClick={() => navigate({ to: '/patrimonio' })}
-                className="px-6 py-2 border border-[var(--line)] rounded-lg text-[var(--sea-ink)] hover:bg-[var(--line)] transition-colors"
+                className="px-6 py-2 border border-gray-200 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={createMutation.isPending}
-                className="px-6 py-2 bg-[var(--lagoon)] text-white rounded-lg hover:bg-[var(--lagoon-deep)] transition-colors disabled:opacity-50 flex items-center gap-2"
+                className="px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors disabled:opacity-50 flex items-center gap-2"
               >
                 {createMutation.isPending ? (
                   <Loader2 className="w-4 h-4 animate-spin" />

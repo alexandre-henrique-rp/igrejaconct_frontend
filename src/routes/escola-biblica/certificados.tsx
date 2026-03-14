@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { PrivateRoute } from '@/components/PrivateRoute';
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { escolaBiblicaService } from '../../features/escola-biblica/escola-biblica-service';
@@ -8,10 +10,22 @@ import {
   Loader2,
   Award,
   Search,
-  Send,
+
   Download,
   Eye
 } from 'lucide-react';
+import { ptBR } from 'date-fns/locale';
+import { format } from 'date-fns';
+
+function CertificadosPage() {
+  return (
+    <PrivateRoute>
+      <DashboardLayout>
+        <CertificadosList />
+      </DashboardLayout>
+    </PrivateRoute>
+  )
+}
 
 function CertificadosList() {
   const queryClient = useQueryClient();
@@ -54,7 +68,7 @@ function CertificadosList() {
 
   const handleVerificar = async (numero: string) => {
     try {
-      const result = await escolaBiblicaService.verifyCertificado(numero);
+      const result = await escolaBiblicaService.verificarCertificado(numero);
       alert(`Certificado válido: ${result.nome_aluno} - ${result.nome_curso}`);
     } catch {
       alert('Certificado inválido ou não encontrado.');
@@ -242,5 +256,5 @@ function CertificadosList() {
 }
 
 export const Route = createFileRoute('/escola-biblica/certificados')({
-  component: CertificadosList,
+  component: CertificadosPage,
 });

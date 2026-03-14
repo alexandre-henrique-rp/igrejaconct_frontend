@@ -6,7 +6,7 @@ interface SkeletonProps {
 
 export const SkeletonListItem: React.FC<SkeletonProps> = ({ className }) => {
   return (
-    <div className={cn("bg-white border border-[var(--line)] rounded-xl p-6 animate-pulse", className)}>
+    <div className={cn("bg-white border border-gray-200 rounded-xl p-6 animate-pulse", className)}>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="h-10 w-10 bg-gray-200 rounded-lg"></div>
@@ -29,7 +29,7 @@ export const SkeletonListItem: React.FC<SkeletonProps> = ({ className }) => {
 
 export const SkeletonTableRow: React.FC<SkeletonProps> = ({ className }) => {
   return (
-    <div className={cn("border-b border-[var(--line)] p-4 animate-pulse", className)}>
+    <div className={cn("border-b border-gray-200 p-4 animate-pulse", className)}>
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-4 h-4 bg-gray-200 rounded"></div>
         <div className="col-span-3 h-4 bg-gray-200 rounded"></div>
