@@ -9,7 +9,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="h-screen bg-gray-50 flex overflow-hidden">
       {/* Sidebar Lateral - flex shrink-0 para não comprimir */}
       <Sidebar 
         isExpanded={isSidebarExpanded} 

@@ -59,6 +59,7 @@ import { Route as PatrimonioEmprestimosNovoRouteImport } from './routes/patrimon
 import { Route as MinisteriosAdminDisponibilidadeRouteImport } from './routes/ministerios/admin/disponibilidade'
 import { Route as MinisteriosIdEditRouteImport } from './routes/ministerios/$id/edit'
 import { Route as MembrosIdEditRouteImport } from './routes/membros/$id/edit'
+import { Route as FinanceiroLancamentosNewRouteImport } from './routes/financeiro/lancamentos/new'
 import { Route as AdminUsuariosNovoRouteImport } from './routes/admin/usuarios/novo'
 import { Route as AdminIgrejasNovaRouteImport } from './routes/admin/igrejas/nova'
 
@@ -317,6 +318,12 @@ const MembrosIdEditRoute = MembrosIdEditRouteImport.update({
   path: '/edit',
   getParentRoute: () => MembrosIdRoute,
 } as any)
+const FinanceiroLancamentosNewRoute =
+  FinanceiroLancamentosNewRouteImport.update({
+    id: '/new',
+    path: '/new',
+    getParentRoute: () => FinanceiroLancamentosRoute,
+  } as any)
 const AdminUsuariosNovoRoute = AdminUsuariosNovoRouteImport.update({
   id: '/admin/usuarios/novo',
   path: '/admin/usuarios/novo',
@@ -344,7 +351,7 @@ export interface FileRoutesByFullPath {
   '/eventos/new': typeof EventosNewRoute
   '/financeiro/categorias': typeof FinanceiroCategoriasRoute
   '/financeiro/contas': typeof FinanceiroContasRoute
-  '/financeiro/lancamentos': typeof FinanceiroLancamentosRoute
+  '/financeiro/lancamentos': typeof FinanceiroLancamentosRouteWithChildren
   '/membros/$id': typeof MembrosIdRouteWithChildren
   '/membros/new': typeof MembrosNewRoute
   '/ministerios/$id': typeof MinisteriosIdRouteWithChildren
@@ -371,6 +378,7 @@ export interface FileRoutesByFullPath {
   '/relatorios/': typeof RelatoriosIndexRoute
   '/admin/igrejas/nova': typeof AdminIgrejasNovaRoute
   '/admin/usuarios/novo': typeof AdminUsuariosNovoRoute
+  '/financeiro/lancamentos/new': typeof FinanceiroLancamentosNewRoute
   '/membros/$id/edit': typeof MembrosIdEditRoute
   '/ministerios/$id/edit': typeof MinisteriosIdEditRoute
   '/ministerios/admin/disponibilidade': typeof MinisteriosAdminDisponibilidadeRoute
@@ -398,7 +406,7 @@ export interface FileRoutesByTo {
   '/eventos/new': typeof EventosNewRoute
   '/financeiro/categorias': typeof FinanceiroCategoriasRoute
   '/financeiro/contas': typeof FinanceiroContasRoute
-  '/financeiro/lancamentos': typeof FinanceiroLancamentosRoute
+  '/financeiro/lancamentos': typeof FinanceiroLancamentosRouteWithChildren
   '/membros/$id': typeof MembrosIdRouteWithChildren
   '/membros/new': typeof MembrosNewRoute
   '/ministerios/$id': typeof MinisteriosIdRouteWithChildren
@@ -425,6 +433,7 @@ export interface FileRoutesByTo {
   '/relatorios': typeof RelatoriosIndexRoute
   '/admin/igrejas/nova': typeof AdminIgrejasNovaRoute
   '/admin/usuarios/novo': typeof AdminUsuariosNovoRoute
+  '/financeiro/lancamentos/new': typeof FinanceiroLancamentosNewRoute
   '/membros/$id/edit': typeof MembrosIdEditRoute
   '/ministerios/$id/edit': typeof MinisteriosIdEditRoute
   '/ministerios/admin/disponibilidade': typeof MinisteriosAdminDisponibilidadeRoute
@@ -453,7 +462,7 @@ export interface FileRoutesById {
   '/eventos/new': typeof EventosNewRoute
   '/financeiro/categorias': typeof FinanceiroCategoriasRoute
   '/financeiro/contas': typeof FinanceiroContasRoute
-  '/financeiro/lancamentos': typeof FinanceiroLancamentosRoute
+  '/financeiro/lancamentos': typeof FinanceiroLancamentosRouteWithChildren
   '/membros/$id': typeof MembrosIdRouteWithChildren
   '/membros/new': typeof MembrosNewRoute
   '/ministerios/$id': typeof MinisteriosIdRouteWithChildren
@@ -480,6 +489,7 @@ export interface FileRoutesById {
   '/relatorios/': typeof RelatoriosIndexRoute
   '/admin/igrejas/nova': typeof AdminIgrejasNovaRoute
   '/admin/usuarios/novo': typeof AdminUsuariosNovoRoute
+  '/financeiro/lancamentos/new': typeof FinanceiroLancamentosNewRoute
   '/membros/$id/edit': typeof MembrosIdEditRoute
   '/ministerios/$id/edit': typeof MinisteriosIdEditRoute
   '/ministerios/admin/disponibilidade': typeof MinisteriosAdminDisponibilidadeRoute
@@ -536,6 +546,7 @@ export interface FileRouteTypes {
     | '/relatorios/'
     | '/admin/igrejas/nova'
     | '/admin/usuarios/novo'
+    | '/financeiro/lancamentos/new'
     | '/membros/$id/edit'
     | '/ministerios/$id/edit'
     | '/ministerios/admin/disponibilidade'
@@ -590,6 +601,7 @@ export interface FileRouteTypes {
     | '/relatorios'
     | '/admin/igrejas/nova'
     | '/admin/usuarios/novo'
+    | '/financeiro/lancamentos/new'
     | '/membros/$id/edit'
     | '/ministerios/$id/edit'
     | '/ministerios/admin/disponibilidade'
@@ -644,6 +656,7 @@ export interface FileRouteTypes {
     | '/relatorios/'
     | '/admin/igrejas/nova'
     | '/admin/usuarios/novo'
+    | '/financeiro/lancamentos/new'
     | '/membros/$id/edit'
     | '/ministerios/$id/edit'
     | '/ministerios/admin/disponibilidade'
@@ -672,7 +685,7 @@ export interface RootRouteChildren {
   EventosNewRoute: typeof EventosNewRoute
   FinanceiroCategoriasRoute: typeof FinanceiroCategoriasRoute
   FinanceiroContasRoute: typeof FinanceiroContasRoute
-  FinanceiroLancamentosRoute: typeof FinanceiroLancamentosRoute
+  FinanceiroLancamentosRoute: typeof FinanceiroLancamentosRouteWithChildren
   MembrosIdRoute: typeof MembrosIdRouteWithChildren
   MembrosNewRoute: typeof MembrosNewRoute
   MinisteriosIdRoute: typeof MinisteriosIdRouteWithChildren
@@ -1061,6 +1074,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MembrosIdEditRouteImport
       parentRoute: typeof MembrosIdRoute
     }
+    '/financeiro/lancamentos/new': {
+      id: '/financeiro/lancamentos/new'
+      path: '/new'
+      fullPath: '/financeiro/lancamentos/new'
+      preLoaderRoute: typeof FinanceiroLancamentosNewRouteImport
+      parentRoute: typeof FinanceiroLancamentosRoute
+    }
     '/admin/usuarios/novo': {
       id: '/admin/usuarios/novo'
       path: '/admin/usuarios/novo'
@@ -1077,6 +1097,19 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface FinanceiroLancamentosRouteChildren {
+  FinanceiroLancamentosNewRoute: typeof FinanceiroLancamentosNewRoute
+}
+
+const FinanceiroLancamentosRouteChildren: FinanceiroLancamentosRouteChildren = {
+  FinanceiroLancamentosNewRoute: FinanceiroLancamentosNewRoute,
+}
+
+const FinanceiroLancamentosRouteWithChildren =
+  FinanceiroLancamentosRoute._addFileChildren(
+    FinanceiroLancamentosRouteChildren,
+  )
 
 interface MembrosIdRouteChildren {
   MembrosIdEditRoute: typeof MembrosIdEditRoute
@@ -1118,7 +1151,7 @@ const rootRouteChildren: RootRouteChildren = {
   EventosNewRoute: EventosNewRoute,
   FinanceiroCategoriasRoute: FinanceiroCategoriasRoute,
   FinanceiroContasRoute: FinanceiroContasRoute,
-  FinanceiroLancamentosRoute: FinanceiroLancamentosRoute,
+  FinanceiroLancamentosRoute: FinanceiroLancamentosRouteWithChildren,
   MembrosIdRoute: MembrosIdRouteWithChildren,
   MembrosNewRoute: MembrosNewRoute,
   MinisteriosIdRoute: MinisteriosIdRouteWithChildren,

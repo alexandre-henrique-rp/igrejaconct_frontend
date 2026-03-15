@@ -101,10 +101,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isExpanded, onToggle }) => {
 
   return (
     <nav
-      className={`${isExpanded ? "w-64" : "w-16"} bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 transition-all duration-300 flex flex-col shadow-lg shrink-0 h-screen sticky top-0`}
+      className={`${isExpanded ? "w-64" : "w-16"} bg-white dark:bg-gray-900 border-r border-gray-300 dark:border-gray-700 transition-all duration-300 flex flex-col shadow-lg shrink-0 h-screen sticky top-0`}
     >
       {/* Header com Logo e Toggle Button */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
+      <div className="flex items-center justify-between p-4 border-b border-gray-300 dark:border-gray-700">
         <span
           className={`${isExpanded ? "block" : "hidden"} text-blue-600 text-2xl text-bold  dark:text-white font-semibold `}
         >
@@ -154,7 +154,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isExpanded, onToggle }) => {
       </div>
 
       {/* User Profile Section */}
-      <div className="border-t border-gray-200 dark:border-gray-800 p-4">
+      <div className="border-t border-gray-300 dark:border-gray-700 p-4">
         {/* Theme Toggler - acima do usuário */}
         <div
           className={`flex items-center gap-2 mb-3 ${isExpanded ? "justify-between" : "justify-center"}`}
