@@ -39,6 +39,10 @@ export interface Membro {
   status: StatusMembro
   created_at: string
   updated_at: string
+  igreja?: {
+    id: string
+    nome: string
+  } | null
 }
 
 export interface MembroSummary {
@@ -85,7 +89,13 @@ export interface MembroFilters {
 
 export interface MembrosListResponse {
   data: Membro[]
-  total: number
+  pagination: {
+    total: number
+    limit: number
+    offset: number
+    page: number
+    totalPages: number
+  }
 }
 
 export interface HistoricoMembro {

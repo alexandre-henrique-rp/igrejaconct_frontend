@@ -1,18 +1,23 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { DashboardLayout } from '@/layouts/DashboardLayout';
-import { PrivateRoute } from '@/components/PrivateRoute';
+import { DashboardLayout } from '@/layouts/DashboardLayout'
+import { PrivateRoute } from '@/components/PrivateRoute'
 import { MemberList } from '@/features/membros/components/MemberList'
 
-export const Route = createFileRoute('/membros/')({
-  component: MembrosPage,
-})
 
-function MembrosPage() {
+const MembrosPage = () => {
+
+
   return (
     <PrivateRoute>
       <DashboardLayout>
-        <MemberList />
+        <div className="space-y-6 overflow-hidden">
+          <MemberList />
+        </div>
       </DashboardLayout>
     </PrivateRoute>
   )
 }
+
+export const Route = createFileRoute('/membros/')({
+  component: MembrosPage,
+})

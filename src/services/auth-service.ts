@@ -24,10 +24,10 @@ export const authService = {
   /**
    * Login with email and password
    */
-  async login(email: string, password: string): Promise<AuthResponse> {
+  async login(email: string, senha: string): Promise<AuthResponse> {
     const response = await apiClient.post<AuthResponse>('/auth/login', {
       email,
-      password,
+      senha,
     })
     return response.data
   },

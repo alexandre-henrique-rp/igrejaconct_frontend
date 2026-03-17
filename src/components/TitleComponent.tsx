@@ -11,8 +11,8 @@ interface TitleComponentProps {
 export const TitleComponent = ({ title, description }: TitleComponentProps) => {
   return (
     <div>
-      <h1 className="text-2xl font-bold display-title text-blue-600">{title}</h1>
-      {description && <p className="text-sm text-gray-600 mt-1">{description}</p>}
+      <h1 className="text-3xl font-bold display-title text-blue-600 dark:text-blue-400">{title}</h1>
+      {description && <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{description}</p>}
     </div>
   );
 };

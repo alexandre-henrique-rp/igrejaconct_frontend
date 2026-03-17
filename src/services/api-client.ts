@@ -33,18 +33,65 @@ function processQueue(error: any, token: string | null = null): void {
   failedQueue = []
 }
 
+async function ensureValidToken(reqUrl?: string): Promise<string | null> {
+  if (reqUrl?.includes('/auth/logout')) {
+    return tokenManager.getAccessToken()
+  }
+  
+  const accessToken = tokenManager.getAccessToken()
+  
+  if (!accessToken) {
+    return null
+  }
+  
+  if (tokenManager.isTokenExpiredOrExpiringSoon(accessToken)) {
+    const refreshToken = tokenManager.getRefreshToken()
+    const user = tokenManager.getUser()
+    
+    if (!refreshToken || !user?.id) {
+      return null
+    }
+    
+    try {
+      const response = await axios.post(`${API_URL}/auth/refresh`, {
+        refreshToken,
+        userId: user.id
+      })
+      
+      const { access_token, refresh_token } = response.data
+      tokenManager.setTokens(access_token, refresh_token)
+      
+      const decodedAccess = tokenManager.decodeToken(access_token)
+      if (decodedAccess) {
+        const updatedUser = {
+          ...user,
+          email: decodedAccess.email || user.email,
+          role: decodedAccess.role || user.role,
+          igrejaId: decodedAccess.igrejaId || user.igrejaId,
+        }
+        tokenManager.setUser(updatedUser)
+      }
+      
+      return access_token
+    } catch (error) {
+      tokenManager.clearTokens()
+      window.location.href = '/login'
+      return null
+    }
+  }
+  
+  return accessToken
+}
+
 /**
  * Request interceptor - add Authorization header
  */
 apiClient.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
-    const accessToken = tokenManager.getAccessToken()
-    console.log('🔑 Token no interceptor:', accessToken ? 'Presente' : 'AUSENTE')
+  async (config: InternalAxiosRequestConfig) => {
+    const accessToken = await ensureValidToken(config.url)
+    
     if (accessToken && config.headers) {
       config.headers.Authorization = `Bearer ${accessToken}`
-      console.log('✅ Authorization header adicionado:', config.headers.Authorization.substring(0, 30) + '...')
-    } else {
-      console.log('❌ Token não encontrado ou headers inválidos')
     }
     return config
   },
@@ -92,6 +139,17 @@ apiClient.interceptors.response.use(
 
           const { access_token, refresh_token } = response.data
           tokenManager.setTokens(access_token, refresh_token)
+
+          const decodedAccess = tokenManager.decodeToken(access_token)
+          if (decodedAccess) {
+            const updatedUser = {
+              ...user,
+              email: decodedAccess.email || user.email,
+              role: decodedAccess.role || user.role,
+              igrejaId: decodedAccess.igrejaId || user.igrejaId,
+            }
+            tokenManager.setUser(updatedUser)
+          }
 
           // Update Authorization header for original request
           apiClient.defaults.headers.common['Authorization'] = `Bearer ${access_token}`

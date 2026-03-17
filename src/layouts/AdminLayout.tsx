@@ -41,10 +41,10 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   });
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-900 via-gray-800 to-gray-900">
-      <div className="flex">
+    <div className="h-screen overflow-hidden bg-linear-to-br from-gray-900 via-gray-800 to-gray-900">
+      <div className="flex h-full">
         {/* Sidebar Admin */}
-        <aside className={`${isExpanded ? 'w-64' : 'w-16'} bg-gray-900 border-r border-gray-700 min-h-screen flex flex-col transition-all duration-300`}>
+        <aside className={`${isExpanded ? 'w-64' : 'w-16'} bg-gray-900 border-r border-gray-700 flex flex-col transition-all duration-300`}>
           <div className="p-4 border-b border-gray-700 flex items-center justify-between shrink-0">
             {isExpanded && (
               <div className="flex items-center gap-2">
@@ -111,7 +111,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
         </aside>
 
         {/* Conteúdo Principal */}
-        <main className="flex-1 p-8">
+        <main className="flex-1 overflow-y-auto p-8">
           {children}
         </main>
       </div>

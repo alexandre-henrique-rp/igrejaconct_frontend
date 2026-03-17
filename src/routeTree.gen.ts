@@ -37,6 +37,7 @@ import { Route as PatrimonioNovoRouteImport } from './routes/patrimonio/novo'
 import { Route as MinisteriosNewRouteImport } from './routes/ministerios/new'
 import { Route as MinisteriosIdRouteImport } from './routes/ministerios/$id'
 import { Route as MembrosNewRouteImport } from './routes/membros/new'
+import { Route as MembrosImportRouteImport } from './routes/membros/import'
 import { Route as MembrosIdRouteImport } from './routes/membros/$id'
 import { Route as FinanceiroLancamentosRouteImport } from './routes/financeiro/lancamentos'
 import { Route as FinanceiroContasRouteImport } from './routes/financeiro/contas'
@@ -203,6 +204,11 @@ const MembrosNewRoute = MembrosNewRouteImport.update({
   path: '/membros/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MembrosImportRoute = MembrosImportRouteImport.update({
+  id: '/membros/import',
+  path: '/membros/import',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MembrosIdRoute = MembrosIdRouteImport.update({
   id: '/membros/$id',
   path: '/membros/$id',
@@ -353,6 +359,7 @@ export interface FileRoutesByFullPath {
   '/financeiro/contas': typeof FinanceiroContasRoute
   '/financeiro/lancamentos': typeof FinanceiroLancamentosRouteWithChildren
   '/membros/$id': typeof MembrosIdRouteWithChildren
+  '/membros/import': typeof MembrosImportRoute
   '/membros/new': typeof MembrosNewRoute
   '/ministerios/$id': typeof MinisteriosIdRouteWithChildren
   '/ministerios/new': typeof MinisteriosNewRoute
@@ -408,6 +415,7 @@ export interface FileRoutesByTo {
   '/financeiro/contas': typeof FinanceiroContasRoute
   '/financeiro/lancamentos': typeof FinanceiroLancamentosRouteWithChildren
   '/membros/$id': typeof MembrosIdRouteWithChildren
+  '/membros/import': typeof MembrosImportRoute
   '/membros/new': typeof MembrosNewRoute
   '/ministerios/$id': typeof MinisteriosIdRouteWithChildren
   '/ministerios/new': typeof MinisteriosNewRoute
@@ -464,6 +472,7 @@ export interface FileRoutesById {
   '/financeiro/contas': typeof FinanceiroContasRoute
   '/financeiro/lancamentos': typeof FinanceiroLancamentosRouteWithChildren
   '/membros/$id': typeof MembrosIdRouteWithChildren
+  '/membros/import': typeof MembrosImportRoute
   '/membros/new': typeof MembrosNewRoute
   '/ministerios/$id': typeof MinisteriosIdRouteWithChildren
   '/ministerios/new': typeof MinisteriosNewRoute
@@ -521,6 +530,7 @@ export interface FileRouteTypes {
     | '/financeiro/contas'
     | '/financeiro/lancamentos'
     | '/membros/$id'
+    | '/membros/import'
     | '/membros/new'
     | '/ministerios/$id'
     | '/ministerios/new'
@@ -576,6 +586,7 @@ export interface FileRouteTypes {
     | '/financeiro/contas'
     | '/financeiro/lancamentos'
     | '/membros/$id'
+    | '/membros/import'
     | '/membros/new'
     | '/ministerios/$id'
     | '/ministerios/new'
@@ -631,6 +642,7 @@ export interface FileRouteTypes {
     | '/financeiro/contas'
     | '/financeiro/lancamentos'
     | '/membros/$id'
+    | '/membros/import'
     | '/membros/new'
     | '/ministerios/$id'
     | '/ministerios/new'
@@ -687,6 +699,7 @@ export interface RootRouteChildren {
   FinanceiroContasRoute: typeof FinanceiroContasRoute
   FinanceiroLancamentosRoute: typeof FinanceiroLancamentosRouteWithChildren
   MembrosIdRoute: typeof MembrosIdRouteWithChildren
+  MembrosImportRoute: typeof MembrosImportRoute
   MembrosNewRoute: typeof MembrosNewRoute
   MinisteriosIdRoute: typeof MinisteriosIdRouteWithChildren
   MinisteriosNewRoute: typeof MinisteriosNewRoute
@@ -918,6 +931,13 @@ declare module '@tanstack/react-router' {
       path: '/membros/new'
       fullPath: '/membros/new'
       preLoaderRoute: typeof MembrosNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membros/import': {
+      id: '/membros/import'
+      path: '/membros/import'
+      fullPath: '/membros/import'
+      preLoaderRoute: typeof MembrosImportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/membros/$id': {
@@ -1153,6 +1173,7 @@ const rootRouteChildren: RootRouteChildren = {
   FinanceiroContasRoute: FinanceiroContasRoute,
   FinanceiroLancamentosRoute: FinanceiroLancamentosRouteWithChildren,
   MembrosIdRoute: MembrosIdRouteWithChildren,
+  MembrosImportRoute: MembrosImportRoute,
   MembrosNewRoute: MembrosNewRoute,
   MinisteriosIdRoute: MinisteriosIdRouteWithChildren,
   MinisteriosNewRoute: MinisteriosNewRoute,

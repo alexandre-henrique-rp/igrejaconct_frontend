@@ -12,9 +12,9 @@ export function ButtonNew({ nav, label }: ButtonNewProps) {
   return (
     <button
       onClick={() => navigate({ to: nav })}
-      className="flex items-center gap-2 px-6 py-3.5 bg-(--lagoon) text-white rounded-xl hover:bg-(--lagoon-deep) shadow-lg shadow-(--lagoon)/20 hover:shadow-xl hover:scale-[1.02] transition-all text-sm font-bold"
+      className="flex items-center gap-2 px-6 py-3.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/20 hover:border-white/30 text-white hover:text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all text-sm font-bold"
     >
-      <Plus className="w-4 h-4" />
+      <Plus className="w-4 h-4 text-white" />
       {label}
     </button>
   );
